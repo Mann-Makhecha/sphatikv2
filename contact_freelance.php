@@ -20,8 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header('Location: contact_freelancer.php?freelancer_id=' . $freelancer_id);
         exit();
     }
-
-    $stmt->close();
 }
 
 // Fetch freelancers from the database

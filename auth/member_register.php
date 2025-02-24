@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param("sss", $username, $email, $hashed_password);
 
     if ($stmt->execute()) {
-        echo "<script>alert('Registration successful!'); window.location.href='user_login.php';</script>";
+        echo "<script>alert('Registration successful!'); window.location.href='mem_login.php';</script>";
     } else {
         echo "<script>alert('Error registering user');</script>";
     }
