@@ -12,15 +12,15 @@ define("BASE_URL", "http://localhost/sphatikv2/");
                 <span></span>
             </button>
             <ul class="nav-list">
-                <li class="lsit-item"><a href="<?= BASE_URL ?>home.php" style="text-decoration: none;">Home</a></li>
-                <li class="lsit-item"><a href="<?= BASE_URL ?>courses.php">Courses</a></li>
-                <li class="lsit-item"><a href="<?= BASE_URL ?>freelance.php">Freelance</a></li>
-                <li class="lsit-item"><a href="<?= BASE_URL ?>local_services.php">Local Services</a></li>
+                <li class="list-item"><a href="<?= BASE_URL ?>home.php" style="text-decoration: none;">Home</a></li>
+                <li class="list-item"><a href="<?= BASE_URL ?>courses.php">Courses</a></li>
+                <li class="list-item"><a href="<?= BASE_URL ?>freelance.php">Freelance</a></li>
+                <li class="list-item"><a href="<?= BASE_URL ?>local_services.php">Local Services</a></li>
                 <?php if (isset($_SESSION['user_id'])): ?>
-                    <li class="lsit-item"><a href="<?= BASE_URL ?>profile.php">Profile</a></li>
-                    <li class="lsit-item"><a href="<?= BASE_URL ?>logout.php">Logout</a></li>
+                    <li class="list-item"><a href="<?= BASE_URL ?>profile.php">Profile</a></li>
+                    <li class="list-item"><a href="<?= BASE_URL ?>logout.php">Logout</a></li>
                 <?php else: ?>
-                    <li class="lsit-item"><a href="<?= BASE_URL ?>logout.php" class="btn btn-login">Logout</a></li>
+                    <li class="list-item"><a href="<?= BASE_URL ?>logout.php" class="btn btn-login">Logout</a></li>
                 <?php endif; ?>
             </ul>
         </nav>
