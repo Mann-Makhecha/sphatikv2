@@ -1,5 +1,5 @@
 <?php
-define("BASE_URL", "http://localhost/Sphatikv2/");
+define("BASE_URL", "http://localhost/sphatikv2/");
 ?>
 
 <header class="header">
@@ -26,3 +26,4 @@ define("BASE_URL", "http://localhost/Sphatikv2/");
         </nav>
     </div>
 </header>
+<script src="js/home_js.js"></script>
