@@ -1,6 +1,6 @@
 <?php
 session_start();
-include './auth/db.php';
+include './includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = $_POST['name'];
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header('Location: contact_freelancer.php?freelancer_id=' . $freelancer_id);
         exit();
     }
-    
+
     $stmt->close();
 }
 
@@ -33,6 +33,7 @@ $selected_freelancer = isset($_GET['freelancer_id']) ? $_GET['freelancer_id'] : 
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,6 +49,7 @@ $selected_freelancer = isset($_GET['freelancer_id']) ? $_GET['freelancer_id'] : 
             height: 100vh;
             margin: 0;
         }
+
         .container {
             background: white;
             padding: 30px;
@@ -56,16 +58,21 @@ $selected_freelancer = isset($_GET['freelancer_id']) ? $_GET['freelancer_id'] : 
             width: 400px;
             text-align: center;
         }
+
         h2 {
             color: #6d28d9;
         }
+
         label {
             display: block;
             text-align: left;
             margin-top: 10px;
             font-weight: bold;
         }
-        input, select, textarea {
+
+        input,
+        select,
+        textarea {
             width: 100%;
             padding: 10px;
             margin-top: 5px;
@@ -73,6 +80,7 @@ $selected_freelancer = isset($_GET['freelancer_id']) ? $_GET['freelancer_id'] : 
             border-radius: 5px;
             font-size: 16px;
         }
+
         button {
             background-color: #6d28d9;
             color: white;
@@ -85,14 +93,17 @@ $selected_freelancer = isset($_GET['freelancer_id']) ? $_GET['freelancer_id'] : 
             font-size: 16px;
             transition: background 0.3s;
         }
+
         button:hover {
             background-color: #5a1fb9;
         }
+
         .message {
             color: green;
             font-weight: bold;
             margin-bottom: 15px;
         }
+
         .error {
             color: red;
             font-weight: bold;
@@ -100,6 +111,7 @@ $selected_freelancer = isset($_GET['freelancer_id']) ? $_GET['freelancer_id'] : 
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h2>Contact a Freelancer</h2>
@@ -123,7 +135,7 @@ $selected_freelancer = isset($_GET['freelancer_id']) ? $_GET['freelancer_id'] : 
                 <?php endwhile; ?>
             </select>
             <label for="name">Your Name:</label>
-            <input type="text" name="name" required value="<?php echo $_SESSION["username"]?>">
+            <input type="text" name="name" required value="<?php echo $_SESSION["username"] ?>">
             <label for="email">Your Email:</label>
             <input type="email" name="email" required>
             <label for="message">Message:</label>
@@ -132,4 +144,5 @@ $selected_freelancer = isset($_GET['freelancer_id']) ? $_GET['freelancer_id'] : 
         </form>
     </div>
 </body>
+
 </html>

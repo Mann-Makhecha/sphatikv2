@@ -1,6 +1,6 @@
 <?php
 session_start();
-include './auth/db.php';
+include './includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = trim($_POST['email']);
@@ -44,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             height: 100vh;
             margin: 0;
         }
+
         .container {
             display: flex;
             width: 800px;
@@ -66,6 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             overflow: hidden;
             background: white;
         }
+
         .left {
             width: 50%;
             padding: 40px;
@@ -74,6 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             align-items: center;
             justify-content: center;
         }
+
         .right {
             width: 50%;
             background: linear-gradient(135deg, #6d28d9, #5a1fb9);
@@ -84,10 +88,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             text-align: center;
             padding: 40px;
         }
+
         h2 {
             color: #333;
             font-size: 24px;
         }
+
         input {
             width: 100%;
             padding: 12px;
@@ -99,6 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             font-size: 16px;
             outline: none;
         }
+
         button {
             background-color: #6d28d9;
             color: white;
@@ -110,27 +117,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             font-size: 16px;
             transition: background 0.3s;
         }
+
         button:hover {
             background-color: #5a1fb9;
         }
+
         p {
             margin-top: 12px;
             font-size: 14px;
         }
+
         a {
             color: #6d28d9;
             text-decoration: none;
             font-weight: bold;
         }
+
         a:hover {
             text-decoration: underline;
         }
+
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
                 width: 90%;
             }
-            .left, .right {
+
+            .left,
+            .right {
                 width: 100%;
                 text-align: center;
                 padding: 20px;
@@ -155,6 +169,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     </script>
 </head>
+
 <body>
     <div class="container">
         <div class="left">
@@ -174,4 +189,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
 </body>
+
 </html>

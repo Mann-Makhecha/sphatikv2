@@ -1,6 +1,6 @@
 <?php
 session_start();
-include './auth/db.php';
+include './includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user_id = $_SESSION['user_id']; // Unique user ID from session

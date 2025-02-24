@@ -1,44 +1,45 @@
 <?php
 session_start();
-include './auth/db.php';
+include './includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
-    
+
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "<script>alert('Invalid email format'); window.history.back();</script>";
         exit;
     }
-    
+
     if ($password !== $confirm_password) {
         echo "<script>alert('Passwords do not match'); window.history.back();</script>";
         exit;
     }
-    
+
     if (strlen($password) < 6) {
         echo "<script>alert('Password must be at least 6 characters long'); window.history.back();</script>";
         exit;
     }
-    
+
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     $stmt = $conn->prepare("INSERT INTO members (username, email, password) VALUES (?, ?, ?)");
     $stmt->bind_param("sss", $username, $email, $hashed_password);
-    
+
     if ($stmt->execute()) {
         echo "<script>alert('Registration successful!'); window.location.href='user_login.php';</script>";
     } else {
         echo "<script>alert('Error registering user');</script>";
     }
-    
+
     $stmt->close();
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,6 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             height: 100vh;
             margin: 0;
         }
+
         .container {
             background: white;
             display: flex;
@@ -62,6 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             overflow: hidden;
             flex-wrap: wrap;
         }
+
         .left {
             width: 50%;
             padding: 40px;
@@ -70,6 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             align-items: center;
             justify-content: center;
         }
+
         .right {
             width: 50%;
             background: linear-gradient(135deg, #6d28d9, #5a1fb9);
@@ -80,11 +84,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             text-align: center;
             padding: 40px;
         }
+
         h2 {
             color: #6d28d9;
             font-size: 26px;
             font-weight: bold;
         }
+
         input {
             width: 100%;
             padding: 14px;
@@ -95,6 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             text-align: center;
             font-size: 16px;
         }
+
         button {
             background-color: #6d28d9;
             color: white;
@@ -107,27 +114,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             font-size: 16px;
             transition: background 0.3s;
         }
+
         button:hover {
             background-color: #5a1fb9;
         }
+
         p {
             margin-top: 14px;
             font-size: 14px;
         }
+
         a {
             color: #6d28d9;
             text-decoration: none;
             font-weight: bold;
         }
+
         a:hover {
             text-decoration: underline;
         }
+
         @media (max-width: 768px) {
             .container {
                 flex-direction: column;
                 width: 90%;
             }
-            .left, .right {
+
+            .left,
+            .right {
                 width: 100%;
                 text-align: center;
                 padding: 30px;
@@ -140,7 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             let password = document.forms["registerForm"]["password"].value;
             let confirmPassword = document.forms["registerForm"]["confirm_password"].value;
             let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            
+
             if (!emailPattern.test(email)) {
                 alert("Invalid email format");
                 return false;
@@ -157,6 +171,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     </script>
 </head>
+
 <body>
     <div class="container">
         <div class="left">
@@ -178,4 +193,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
     </div>
 </body>
+
 </html>
