@@ -12,7 +12,6 @@ define("BASE_URL", "http://localhost/sphatikv2/");
                 <span></span>
             </button>
             <ul class="nav-list">
-                <li class="list-item"><a href="<?= BASE_URL ?>home.php" style="text-decoration: none;">Home</a></li>
                 <li class="list-item"><a href="<?= BASE_URL ?>courses.php">Courses</a></li>
                 <li class="list-item"><a href="<?= BASE_URL ?>freelance.php">Freelance</a></li>
                 <li class="list-item"><a href="<?= BASE_URL ?>local_services.php">Local Services</a></li>

@@ -1,90 +1,84 @@
-<?php
-?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Sphatik</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
-        }
-
-        .welcome {
-            color: #6d28d9;
-            font-size: 50px;
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
-
-        .role {
-            color: #6d28d9;
-            font-size: 30px;
-            font-weight: bold;
-            margin-bottom: 30px;
-        }
-
-        .links {
-            display: flex;
-            gap: 30px;
-            margin-top: 20px;
-            width: 90%;
-            max-width: 1000px;
-        }
-
-        .box {
-            flex: 1;
-            padding: 60px;
-            background: #6d28d9;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 28px;
-            font-weight: bold;
-            transition: 0.3s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .box:hover {
-            background: #5a21b0;
-            transform: scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        @media (max-width: 600px) {
-            .links {
-                flex-direction: column;
-            }
-        }
-    </style>
+    <title>Sphatik - Integrated Workflow Management</title>
+    <link rel="stylesheet" href="css/home_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="welcome">Welcome to Sphatik</div>
-        <div class="role"> Please select your role!</div>
-        <div class="links">
-            <a href="auth/user_login.php" class="box">User</a>
-            <a href="auth/member_login.php" class="box">Member</a>
+
+    <?php include 'includes/header.php'; ?>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Welcome to Sphatik</h1>
+            <p>Your integrated workflow management system for seamless service delivery</p>
+
         </div>
-    </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="features-grid">
+                <a href="courses.php" class="feature-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Courses</h3>
+                    <p>Access quality education and skill development courses</p>
+                </a>
+                <a href="freelance.php" class="feature-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Freelance Services</h3>
+                    <p>Connect with talented freelancers or offer your services</p>
+                </a>
+                <a href="#" class="feature-card">
+                    <i class="fas fa-truck"></i>
+                    <h3>Delivery Partner</h3>
+                    <p>Efficient delivery partner assignment system</p>
+                </a>
+                <a href="local_services.php" class="feature-card">
+                    <i class="fas fa-wrench"></i>
+                    <h3>Local Services</h3>
+                    <p>Find reliable local service providers</p>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2>Why Choose Sphatik?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <i class="fas fa-award"></i>
+                    <h3>Quality Assurance</h3>
+                    <p>All our service providers and courses are thoroughly vetted for quality</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-layer-group"></i>
+                    <h3>Integrated Platform</h3>
+                    <p>Access all services through a single, unified platform</p>
+                </div>
+                <div class="benefit-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Support & Growth</h3>
+                    <p>Dedicated support and opportunities for personal/professional growth</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <?php include 'includes/footer.php'; ?>
 </body>
 
 </html>
