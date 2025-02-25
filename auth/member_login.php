@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->fetch();
 
         if (password_verify($password, $hash)) {
-            $_SESSION['user_id'] = $id;
+            $_SESSION['id'] = $id;
             $_SESSION['username'] = $username;
             $_SESSION['email'] = $email;
             echo "<script> window.location.href='../dashboards/member.php';</script>";

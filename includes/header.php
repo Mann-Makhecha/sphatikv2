@@ -1,10 +1,11 @@
 <?php
 define("BASE_URL", "http://localhost/sphatikv2/");
+session_start();
 ?>
 
 <header class="header">
     <div class="container">
-        <a href="<?= BASE_URL ?>/index.php" class="logo">Sphatik</a>
+        <a href="<?= BASE_URL ?>index.php" class="logo">Sphatik</a>
         <nav class="nav">
             <button class="mobile-menu-btn">
                 <span></span>
@@ -28,4 +29,4 @@ define("BASE_URL", "http://localhost/sphatikv2/");
         </nav>
     </div>
 </header>
-<script src="js/home_js.js"></script>
+<script src="<?php echo BASE_URL ?>js/home_js.js"></script>
