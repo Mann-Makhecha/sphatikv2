@@ -1,6 +1,6 @@
 <?php
 session_start();
-include './includes/db.php';
+include '../includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = trim($_POST['email']);
@@ -45,48 +45,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="../css/form.css">
-    <script>
-        function validateForm() {
-            let email = document.forms["loginForm"]["email"].value;
-            let password = document.forms["loginForm"]["password"].value;
-            let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" href="../css/form.css">
+        <script>
+            function validateForm() {
+                let email = document.forms["loginForm"]["email"].value;
+                let password = document.forms["loginForm"]["password"].value;
+                let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-            if (!emailRegex.test(email)) {
-                alert("Please enter a valid email address");
-                return false;
+                if (!emailRegex.test(email)) {
+                    alert("Please enter a valid email address");
+                    return false;
+                }
+                if (password.length < 6) {
+                    alert("Password must be at least 6 characters long");
+                    return false;
+                }
+                return true;
             }
-            if (password.length < 6) {
-                alert("Password must be at least 6 characters long");
-                return false;
-            }
-            return true;
-        }
-    </script>
-</head>
+        </script>
+    </head>
 
-<body>
-    <div class="container">
-        <div class="left">
-            <h2>Login</h2>
-            <form name="loginForm" method="POST" action="user_login.php" onsubmit="return validateForm()">
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <button type="submit">Login</button>
-            </form>
-            <p>Don't have an account? <a href="register.php">Register</a></p>
-        </div>
-        <div class="right">
-            <div>
-                <h2>Welcome Back!</h2>
-                <p>We're excited to see you again! Log in to continue where you left off and explore new features.</p>
+    <body>
+        <div class="container">
+            <div class="left">
+                <h2>Login</h2>
+                <form name="loginForm" method="POST" action="user_login.php" onsubmit="return validateForm()">
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+                <p>Don't have an account? <a href="register.php">Register</a></p>
+            </div>
+            <div class="right">
+                <div>
+                    <h2>Welcome Back!</h2>
+                    <p>We're excited to see you again! Log in to continue where you left off and explore new features.
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 
 </html>

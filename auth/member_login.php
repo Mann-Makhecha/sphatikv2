@@ -1,19 +1,17 @@
 <?php
 session_start();
-include './includes/db.php';
+include '../includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "<script>alert('Invalid email format'); window.history.back();</script>";
-        exit;
+        $error_message = "Invalid Email Format.";
     }
 
     if (empty($password) || strlen($password) < 6) {
-        echo "<script>alert('Password must be at least 6 characters long'); window.history.back();</script>";
-        exit;
+        $error_message = "Invalid email or password.";
     }
 
     $stmt = $conn->prepare("SELECT id, username, password FROM members WHERE email = ?");
@@ -29,13 +27,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['user_id'] = $id;
             $_SESSION['username'] = $username;
             $_SESSION['email'] = $email;
-            echo "<script> window.location.href='member_home.php';</script>";
+            echo "<script> window.location.href='../dashboards/member.php';</script>";
             exit;
         } else {
-            echo "<script>alert('Incorrect password'); window.history.back();</script>";
+            $error_message = "Invalid email or password.";
         }
     } else {
-        echo "<script>alert('No account found with this email'); window.history.back();</script>";
+        $error_message = "Invalid email or password.";
     }
 
     $stmt->close();
@@ -45,49 +43,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="../css/form.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" href="../css/form.css">
+    </head>
 
-    <script>
-        function validateForm() {
-            let email = document.forms["loginForm"]["email"].value;
-            let password = document.forms["loginForm"]["password"].value;
-            let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-            if (!emailRegex.test(email)) {
-                alert("Please enter a valid email address");
-                return false;
-            }
-            if (password.length < 6) {
-                alert("Password must be at least 6 characters long");
-                return false;
-            }
-            return true;
-        }
-    </script>
-</head>
-
-<body>
-    <div class="container">
-        <div class="left">
-            <h2>Login</h2>
-            <form name="loginForm" method="POST" action="member_login.php" onsubmit="return validateForm()">
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <button type="submit">Login</button>
-            </form>
-            <p>Don't have an account? <a href="member_register.php">Register</a></p>
-        </div>
-        <div class="right">
-            <div>
-                <h2>Welcome Back!</h2>
-                <p>We're excited to see you again! Log in to continue where you left off and explore new features.</p>
+    <body>
+        <div class="container">
+            <div class="left">
+                <h2>Login</h2>
+                <?php if (isset($error_message)) {
+                    echo "<p style='color:red;'>$error_message</p>";
+                } ?>
+                <form name="loginForm" method="POST" action="member_login.php" onsubmit="return validateForm()">
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+                <p>Don't have an account? <a href="member_register.php">Register</a></p>
+            </div>
+            <div class="right">
+                <div>
+                    <h2>Welcome Back!</h2>
+                    <p>We're excited to see you again! Log in to continue where you left off and explore new features.
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 
 </html>

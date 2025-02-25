@@ -1,39 +1,59 @@
 <?php
 session_start();
-include './includes/db.php';
-
+include '../includes/db.php';
+$errors = [];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $id = time();
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
     $role = $_POST['role'];
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "<script>alert('Invalid email format'); window.history.back();</script>";
-        exit;
+
+    if (empty($username) || strlen($username) < 3) {
+        $errors[] = "Username must be at least 3 characters long";
+    }
+
+    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Invalid email format";
+    }
+
+    if (empty($password) || strlen($password) < 8) {
+        $errors[] = "Password must be at least 8 characters long";
     }
 
     if ($password !== $confirm_password) {
-        echo "<script>alert('Passwords do not match'); window.history.back();</script>";
-        exit;
+        $errors[] = "Passwords do not match";
     }
 
-    if (strlen($password) < 6) {
-        echo "<script>alert('Password must be at least 6 characters long'); window.history.back();</script>";
-        exit;
+    if (empty($role)) {
+        $errors[] = "Please select a role";
     }
 
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    $stmt = $conn->prepare("INSERT INTO members (username, email, password, role) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("ssss", $username, $email, $hashed_password, $role);
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM members WHERE username = ? OR email = ?");
+    $stmt->bind_param("ss", $username, $email);
+    $stmt->execute();
+    $stmt->bind_result($count);
+    $stmt->fetch();
+    $stmt->close();
 
-    if ($stmt->execute()) {
-        echo "<script>alert('Registration successful!'); window.location.href='mem_login.php';</script>";
-    } else {
-        echo "<script>alert('Error registering user');</script>";
+    if ($count > 0) {
+        $errors[] = "Username or email already exists";
     }
 
+    if (empty($errors)) {
+
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $conn->prepare("INSERT INTO members (id,username, email, password, role) VALUES (?, ?, ?, ?,?)");
+        $stmt->bind_param("sssss", $id, $username, $email, $hashed_password, $role);
+
+        if ($stmt->execute()) {
+            echo "<script>alert('Registration successful!'); window.location.href='member_login.php';</script>";
+        } else {
+            echo "<script>alert('Error registering user');</script>";
+        }
+    }
     $stmt->close();
 }
 ?>
@@ -41,70 +61,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href="../css/form.css">
-    <script>
-        function validateForm() {
-            const email = document.forms["registerForm"]["email"].value;
-            const password = document.forms["registerForm"]["password"].value;
-            const confirmPassword = document.forms["registerForm"]["confirm_password"].value;
-            const role = document.forms["registerForm"]["role"].value;
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register</title>
+        <link rel="stylesheet" href="../css/form.css">
+    </head>
 
-            if (!emailPattern.test(email)) {
-                alert("Invalid email format");
-                return false;
-            }
-            if (password.length < 6) {
-                alert("Password must be at least 6 characters long");
-                return false;
-            }
-            if (password !== confirmPassword) {
-                alert("Passwords do not match");
-                return false;
-            }
-            if (role === "") {
-                alert("Please select a role");
-                return false;
-            }
-            return true;
-        }
-    </script>
-</head>
+    <body>
+        <div class="container">
+            <div class="left">
+                <h2>Register</h2>
 
-<body>
-    <div class="container">
-        <div class="left">
-            <h2>Register</h2>
-            <form name="registerForm" method="POST" action="member_register.php" onsubmit="return validateForm()">
-                <input type="text" name="username" placeholder="Username" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                <?php if (!empty($errors)): ?>
+                    <div class="alert alert-error">
+                        <?php foreach ($errors as $error): ?>
+                            <p class="msg"><?php echo $error; ?></p>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+                <form name="registerForm" method="POST" action="member_register.php" onsubmit="return validateForm()">
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
 
-                <label for="role">Register as *</label>
-                <select id="role" name="role" required>
-                    <option value="">Select Role</option>
-                    <option value="user" <?php echo (isset($_POST['role']) && $_POST['role'] === 'user') ? 'selected' : ''; ?>>Regular User</option>
-                    <option value="freelancer" <?php echo (isset($_POST['role']) && $_POST['role'] === 'freelancer') ? 'selected' : ''; ?>>Freelancer</option>
-                    <option value="delivery_partner" <?php echo (isset($_POST['role']) && $_POST['role'] === 'delivery_partner') ? 'selected' : ''; ?>>Delivery Partner</option>
-                    <option value="service_provider" <?php echo (isset($_POST['role']) && $_POST['role'] === 'service_provider') ? 'selected' : ''; ?>>Service Provider</option>
-                </select>
+                    <select id="role" name="role" required>
+                        <option value="">Select Role</option>
+                        <option value="freelancer" <?php echo (isset($_POST['role']) && $_POST['role'] === 'freelancer') ? 'selected' : ''; ?>>Freelancer</option>
+                        <option value="instructor" <?php echo (isset($_POST['role']) && $_POST['role'] === 'delivery_partner') ? 'selected' : ''; ?>>Instructor</option>
+                        <option value="local_service_provider" <?php echo (isset($_POST['role']) && $_POST['role'] === 'local_service_provider') ? 'selected' : ''; ?>>Service Provider</option>
+                    </select>
 
-                <button type="submit">Register</button>
-            </form>
-            <p>Already have an account? <a href="user_login.php">Login</a></p>
-        </div>
-        <div class="right">
-            <div>
-                <h2>Join Us!</h2>
-                <p>Create an account to access amazing features and stay connected.</p>
+                    <button type="submit">Register</button>
+                </form>
+                <p class="p">Already have an account? <a href="user_login.php">Login</a></p>
+            </div>
+            <div class="right">
+                <div>
+                    <h2>Join Us!</h2>
+                    <p>Create an account to access amazing features and stay connected.</p>
+                </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 
 </html>
