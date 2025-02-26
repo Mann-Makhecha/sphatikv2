@@ -1,5 +1,4 @@
 <?php
-session_start();
 include './includes/db.php';
 
 // Fetch courses from the database
