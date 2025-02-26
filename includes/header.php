@@ -2,7 +2,7 @@
 define("BASE_URL", "http://localhost/sphatikv2/");
 session_start();
 ?>
-
+<link rel="stylesheet" href="../css/header.css">
 <header class="header">
     <div class="container">
         <a href="<?= BASE_URL ?>index.php" class="logo">Sphatik</a>

@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['user_id'] = $id;
             $_SESSION['username'] = $username;
             $_SESSION['email'] = $email;
-            echo "<script> window.location.href='home.php';</script>";
+            echo "<script> window.location.href='../index.php';</script>";
             exit;
         } else {
             echo "<script>alert('Incorrect password'); window.history.back();</script>";
