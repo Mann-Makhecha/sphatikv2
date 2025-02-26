@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2025 at 03:23 PM
+-- Generation Time: Feb 26, 2025 at 11:01 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -104,16 +104,16 @@ CREATE TABLE `members` (
   `username` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `role` enum('instructor','local_service_provider','freelancer','user') NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `members`
 --
 
-INSERT INTO `members` (`id`, `username`, `email`, `password`, `created_at`) VALUES
-(0, 'mann', 'mann@mail.com', '$2y$10$nNhj7NV5SxYBwMj0/lsKA.vcs3dbD1AVVzdaHD8MfVfhuEDHw/4G6', '2025-02-15 03:36:25'),
-(0, 'krish', 'krish@mail.com', '$2y$10$uJZOco7IzRd.bXYgve25Xu9TLnMmyzNNWzl1iK8QmArEVtCWpu9f.', '2025-02-15 06:04:20');
+INSERT INTO `members` (`id`, `username`, `email`, `password`, `created_at`, `role`) VALUES
+(1740496778, 'Samkit', 'alooooo@gmail.com', '$2y$10$omzbY1mcFYq7O/VxwCgZsuhvH7RpxpF40J46Fac1sJ1xlNbA5Rcui', '2025-02-25 15:19:38', 'freelancer');
 
 -- --------------------------------------------------------
 
