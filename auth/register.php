@@ -1,12 +1,16 @@
 <?php
 session_start();
-include '../includes/db.php';
+require_once '../includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
+    $address = $_POST['address'];
+    $phone = $_POST['phone'];
+    $id = time();
+    $errors = [];
 
     if (empty($username) || strlen($username) < 3) {
         $errors[] = "Username must be at least 3 characters long";
@@ -24,18 +28,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors[] = "Passwords do not match";
     }
 
-
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $username, $email, $hashed_password);
-
-    if ($stmt->execute()) {
-        echo "<script>alert('Registration successful!'); window.location.href='user_login.php';</script>";
-    } else {
-        echo "<script>alert('Error registering user');</script>";
+    if (empty($address) || strlen($address) < 10) {
+        $errors[] = "Address must be at least 10 characters long";
     }
 
-    $stmt->close();
+    if (empty($phone) || !preg_match('/^[0-9]{10}$/', $phone)) {
+        $errors[] = "Phone number must be exactly 10 digits";
+    }
+
+    if (empty($errors)) {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $stmt = $conn->prepare("INSERT INTO users (id,username, email, password, address, phone) VALUES (?, ?, ?, ?, ?,?)");
+        $stmt->bind_param("ssssss", $id, $username, $email, $hashed_password, $address, $phone);
+
+        if ($stmt->execute()) {
+            echo "<script>alert('Registration successful!'); window.location.href='user_login.php';</script>";
+        } else {
+            echo "<script>alert('Error registering user');</script>";
+        }
+
+        $stmt->close();
+    }
 }
 ?>
 
@@ -65,6 +78,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <input type="email" name="email" placeholder="Email" required>
                     <input type="password" name="password" placeholder="Password" required>
                     <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                    <input type="text" name="address" placeholder="Address" required>
+                    <input type="text" name="phone" placeholder="Phone Number" required pattern="[0-9]{10}"
+                        title="Phone number must be 10 digits">
                     <button type="submit">Register</button>
                 </form>
                 <p>Already have an account? <a href="user_login.php">Login</a></p>

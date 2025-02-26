@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../includes/db.php';
+require_once '../includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = trim($_POST['email']);
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute();
     $stmt->store_result();
 
-    if ($stmt->num_rows > 0) {
+    if ($stmt->num_rows > 0 && empty($error_message)) {
         $stmt->bind_result($id, $username, $hash);
         $stmt->fetch();
 
@@ -27,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['id'] = $id;
             $_SESSION['username'] = $username;
             $_SESSION['email'] = $email;
+            $_SESSION['type'] = "member";
             echo "<script> window.location.href='../dashboards/member.php';</script>";
             exit;
         } else {
@@ -57,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <?php if (isset($error_message)) {
                     echo "<p style='color:red;'>$error_message</p>";
                 } ?>
-                <form name="loginForm" method="POST" action="member_login.php" onsubmit="return validateForm()">
+                <form name="loginForm" method="POST" action="member_login.php">
                     <input type="email" name="email" placeholder="Email" required>
                     <input type="password" name="password" placeholder="Password" required>
                     <button type="submit">Login</button>

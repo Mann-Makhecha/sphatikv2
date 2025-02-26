@@ -1,5 +1,5 @@
 <?php
-include '../includes/db.php';
+require_once '../includes/db.php';
 
 // Check if user is logged in
 if (isset($_SESSION['id'])) {

@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Course Page</title>
         <link rel="stylesheet" href="./css/home_style.css">
-        <link rel="stylesheet" href="./css/course_style.css">
+        <link rel="stylesheet" href="./css/innerCourse.css">
     </head>
 
     <body>
@@ -22,7 +22,7 @@
             </div>
 
             <button class="mobile-button"><svg xmlns="http://www.w3.org/2000/svg" height="2.2rem"
-                    viewBox="0 -960 960 960" width="2.2rem" fill="#6d28d9">
+                    viewBox="0 -960 960 960" width="2.2rem" class="backSvg">
                     <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
                 </svg></button>
             <div class="content">
@@ -30,21 +30,21 @@
                     <h2>Module 1: Introduction</h2>
                     <p>Welcome to this course. This module will give you an overview.</p>
                     <div class="f-container">
-                        <iframe class="responsive-iframe" src="https://www.youtube.com/embed/dQw4w9WgXcQ"></iframe>
+                        <iframe class="responsive-iframe" src="#"></iframe>
                     </div>
                 </div>
                 <div id="module2" class="module" style="display: none;">
                     <h2>Module 2: Basics</h2>
                     <p>This module covers the fundamental concepts.</p>
                     <div class="f-container">
-                        <iframe class="responsive-iframe" src="https://www.youtube.com/embed/3JZ_D3ELwOQ"></iframe>
+                        <iframe class="responsive-iframe" src="#"></iframe>
                     </div>
                 </div>
                 <div id="module3" class="module" style="display: none;">
                     <h2>Module 3: Advanced Concepts</h2>
                     <p>Now, let's move on to advanced topics.</p>
                     <div class="f-container">
-                        <iframe class="responsive-iframe" src="https://www.youtube.com/embed/ktjafK4SgWM"></iframe>
+                        <iframe class="responsive-iframe" src="#"></iframe>
                     </div>
                 </div>
             </div>

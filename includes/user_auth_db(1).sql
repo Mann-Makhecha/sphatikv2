@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 26, 2025 at 11:01 AM
+-- Generation Time: Feb 26, 2025 at 05:20 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,10 +41,10 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`id`, `title`, `description`, `image`, `created_at`, `enroll_link`) VALUES
-(1, 'Web Development', 'Learn the fundamentals of web development.', '../images/python.jpg', '2025-02-14 17:29:24', '#'),
-(2, 'Python', 'Pyhtin Course to Levitate your Skills', '#', '2025-02-15 03:51:32', '#'),
-(3, 'Python', 'Pyhtin Course to Levitate your Skills', '#', '2025-02-15 03:52:37', '#'),
-(4, 'DATA STRUCTURE', '...', '#', '2025-02-15 05:42:57', 'https://youtu.be/5_5oE5lgrhw?si=dRLZtMzYMjhfwE2p');
+(1, 'Web Development', 'Learn the fundamentals of web development.', 'C:\\xampp\\htdocs\\sphatikv2\\includes\\images\\python.jpg', '2025-02-14 17:29:24', '#'),
+(2, 'Python', 'Pyhtin Course to Levitate your Skills', 'C:\\xampp\\htdocs\\sphatikv2\\includes\\images\\python.jpg', '2025-02-15 03:51:32', '#'),
+(3, 'Python', 'Pyhtin Course to Levitate your Skills', 'C:\\xampp\\htdocs\\sphatikv2\\includes\\images\\python.jpg', '2025-02-15 03:52:37', '#'),
+(4, 'DATA STRUCTURE', '...', 'C:\\xampp\\htdocs\\sphatikv2\\includes\\images\\python.jpg', '2025-02-15 05:42:57', 'https://youtu.be/5_5oE5lgrhw?si=dRLZtMzYMjhfwE2p');
 
 -- --------------------------------------------------------
 
@@ -175,16 +175,20 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `address` varchar(255) NOT NULL,
+  `phone` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `created_at`) VALUES
-(1, 'mann', 'mann@mail.com', '$2y$10$VXzzsFLMf3GNtxmO80u.NORkRi1l.U9G6V3vG7v0UzT57mvfLF3da', '2025-02-14 15:52:32'),
-(2, 'dhiraj', 'dhiraj@mail.com', '$2y$10$jwUDZ75EXH2fpVPSGOJNxun8UnTFp0fAonAZNaT7cddMNRHcv7p76', '2025-02-15 02:42:53');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `created_at`, `address`, `phone`) VALUES
+(1, 'mann', 'mann@mail.com', '$2y$10$VXzzsFLMf3GNtxmO80u.NORkRi1l.U9G6V3vG7v0UzT57mvfLF3da', '2025-02-14 15:52:32', '', ''),
+(2, 'dhiraj', 'dhiraj@mail.com', '$2y$10$jwUDZ75EXH2fpVPSGOJNxun8UnTFp0fAonAZNaT7cddMNRHcv7p76', '2025-02-15 02:42:53', '', ''),
+(4, 'Samkit', 'sam@gmail.com', '$2y$10$XxepoaMl8UhPYP3wBztw4.jk2Z5Ff9pZ3upDnOpiYLgGQ9eLr6amC', '2025-02-26 10:16:34', '', ''),
+(5, 'Krish', 'Krish@gmail.com', '$2y$10$L5v7LLCK5KZwsVYRN73U0.sE.aV925apJQIQ67ae.3y3Uyd/DH2Q2', '2025-02-26 15:37:22', 'Khara Kuva No Khancho Ahmedabad', '8200700139');
 
 --
 -- Indexes for dumped tables
@@ -268,7 +272,7 @@ ALTER TABLE `service_bookings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

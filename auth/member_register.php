@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../includes/db.php';
+require_once '../includes/db.php';
 $errors = [];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = time();
