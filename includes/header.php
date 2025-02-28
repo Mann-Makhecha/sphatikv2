@@ -1,9 +1,5 @@
 <?php
-define("BASE_URL", "http://localhost/sphatikv2/");
-session_start();
-if (isset($_SESSION['type'])) {
-    $profile_url = $_SESSION['type'] === "member" ? "dashboards/member.php" : "dashboards/user_profile.php";
-}
+require_once 'global.php';
 ?>
 <link rel="stylesheet" href="<?= BASE_URL ?>/css/header.css">
 <header class="header">

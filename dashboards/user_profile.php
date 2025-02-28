@@ -1,8 +1,12 @@
 <?php
 require_once '../includes/db.php';
 require_once '../includes/header.php';
+if (!isset($_SESSION['id'])) {
+    header("Location: ../auth/user_login.php");
+    exit();
+}
 $user_id = $_SESSION['id'];
-$selectQ = "SELECT username, email, phone, address, created_at FROM users WHERE id = $user_id";
+$selectQ = "SELECT username, email, phone, address, created_at FROM users WHERE user_id = $user_id";
 $res = mysqli_query($conn, $selectQ);
 $user = mysqli_fetch_array($res);
 

@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error_message = "Invalid email or password.";
     }
 
-    $stmt = $conn->prepare("SELECT id, username, password FROM members WHERE email = ?");
+    $stmt = $conn->prepare("SELECT mem_id, username, password FROM members WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
@@ -25,9 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (password_verify($password, $hash)) {
             $_SESSION['id'] = $id;
-            $_SESSION['username'] = $username;
-            $_SESSION['email'] = $email;
             $_SESSION['type'] = "member";
+            setcookie("id", $id, time() + 82400 * 30);
+            setcookie("type", "member", time() + 82400 * 30);
+
             echo "<script> window.location.href='../dashboards/member.php';</script>";
             exit;
         } else {

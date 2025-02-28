@@ -36,9 +36,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors[] = "Phone number must be exactly 10 digits";
     }
 
+
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM users WHERE username = ? OR email = ?");
+    $stmt->bind_param("ss", $username, $email);
+    $stmt->execute();
+    $stmt->bind_result($count);
+    $stmt->fetch();
+    $stmt->close();
+
+    if ($count > 0) {
+        $errors[] = "Username or email already exists";
+    }
+
+
     if (empty($errors)) {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $conn->prepare("INSERT INTO users (id,username, email, password, address, phone) VALUES (?, ?, ?, ?, ?,?)");
+        $stmt = $conn->prepare("INSERT INTO users (user_id,username, email, password, address, phone) VALUES (?, ?, ?, ?, ?,?)");
         $stmt->bind_param("ssssss", $id, $username, $email, $hashed_password, $address, $phone);
 
         if ($stmt->execute()) {
@@ -76,11 +89,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <form name="registerForm" method="POST" action="register.php">
                     <input type="text" name="username" placeholder="Username" required>
                     <input type="email" name="email" placeholder="Email" required>
-                    <input type="password" name="password" placeholder="Password" required>
-                    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
                     <input type="text" name="address" placeholder="Address" required>
                     <input type="text" name="phone" placeholder="Phone Number" required pattern="[0-9]{10}"
                         title="Phone number must be 10 digits">
+                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
                     <button type="submit">Register</button>
                 </form>
                 <p>Already have an account? <a href="user_login.php">Login</a></p>

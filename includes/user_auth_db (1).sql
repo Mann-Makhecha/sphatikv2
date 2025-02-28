@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 26, 2025 at 05:20 PM
+-- Generation Time: Feb 28, 2025 at 03:46 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -100,9 +100,11 @@ INSERT INTO `freelancer_contacts` (`id`, `freelancer_id`, `name`, `email`, `mess
 --
 
 CREATE TABLE `members` (
-  `id` int(11) NOT NULL,
+  `mem_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `phone` int(10) NOT NULL,
   `password` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `role` enum('instructor','local_service_provider','freelancer','user') NOT NULL DEFAULT 'user'
@@ -112,8 +114,9 @@ CREATE TABLE `members` (
 -- Dumping data for table `members`
 --
 
-INSERT INTO `members` (`id`, `username`, `email`, `password`, `created_at`, `role`) VALUES
-(1740496778, 'Samkit', 'alooooo@gmail.com', '$2y$10$omzbY1mcFYq7O/VxwCgZsuhvH7RpxpF40J46Fac1sJ1xlNbA5Rcui', '2025-02-25 15:19:38', 'freelancer');
+INSERT INTO `members` (`mem_id`, `username`, `email`, `address`, `phone`, `password`, `created_at`, `role`) VALUES
+(1740753216, 'Samkit', 'samk@gmail.com', 'Khara Kuva No Kha Ho Degham', 2147483647, '$2y$10$n.O8t954e7Ch427lubG8LOYsn3XwJ0u1NnutQnk7I0abea2ICPI7S', '2025-02-28 14:33:37', 'freelancer'),
+(1740753966, 'Chirag', 'Chirag@gmail.com', 'Khara Kuva No Kha Ho Degham', 2147483647, '$2y$10$YYnt7CKneQcRicY58RRQN./5.tBaLmGKxZdR/WRPpLYZEsWpxuZ1.', '2025-02-28 14:46:06', 'freelancer');
 
 -- --------------------------------------------------------
 
@@ -156,14 +159,6 @@ CREATE TABLE `service_bookings` (
   `booking_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `service_bookings`
---
-
-INSERT INTO `service_bookings` (`id`, `user_id`, `service_id`, `name`, `email`, `phone`, `address`, `booking_date`) VALUES
-(1, 1, 1, 'mann', 'mann@mail.com', '977795522', 'abc', '2025-02-15 04:26:05'),
-(2, 1, 2, 'mann', 'mann@mail.com', '4569872145', 'ggj', '2025-02-15 04:56:08');
-
 -- --------------------------------------------------------
 
 --
@@ -171,7 +166,7 @@ INSERT INTO `service_bookings` (`id`, `user_id`, `service_id`, `name`, `email`, 
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -184,11 +179,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `created_at`, `address`, `phone`) VALUES
-(1, 'mann', 'mann@mail.com', '$2y$10$VXzzsFLMf3GNtxmO80u.NORkRi1l.U9G6V3vG7v0UzT57mvfLF3da', '2025-02-14 15:52:32', '', ''),
-(2, 'dhiraj', 'dhiraj@mail.com', '$2y$10$jwUDZ75EXH2fpVPSGOJNxun8UnTFp0fAonAZNaT7cddMNRHcv7p76', '2025-02-15 02:42:53', '', ''),
-(4, 'Samkit', 'sam@gmail.com', '$2y$10$XxepoaMl8UhPYP3wBztw4.jk2Z5Ff9pZ3upDnOpiYLgGQ9eLr6amC', '2025-02-26 10:16:34', '', ''),
-(5, 'Krish', 'Krish@gmail.com', '$2y$10$L5v7LLCK5KZwsVYRN73U0.sE.aV925apJQIQ67ae.3y3Uyd/DH2Q2', '2025-02-26 15:37:22', 'Khara Kuva No Khancho Ahmedabad', '8200700139');
+INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `created_at`, `address`, `phone`) VALUES
+(1740751687, 'Samkit', 'samk@gmail.com', '$2y$10$eijmjrnng9OPYARYSi7ogu.teluAMjO42oJm5ZM2oSm1U3QeYt/72', '2025-02-28 14:08:07', 'Khara Kuva No Kha Ho Degham', '8200700139'),
+(1740753364, 'Krish', 'krish@mail.com', '$2y$10$hGKkSE7fg/./zKzAZ2KEm.Q/.L58A1eW0bAXUII4pCDiNo1Ain/p2', '2025-02-28 14:36:04', 'Khara Kuva No Kha Ho Degham', '8200700139');
 
 --
 -- Indexes for dumped tables
@@ -214,6 +207,13 @@ ALTER TABLE `freelancer_contacts`
   ADD KEY `freelancer_id` (`freelancer_id`);
 
 --
+-- Indexes for table `members`
+--
+ALTER TABLE `members`
+  ADD PRIMARY KEY (`mem_id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
 -- Indexes for table `services`
 --
 ALTER TABLE `services`
@@ -231,7 +231,7 @@ ALTER TABLE `service_bookings`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
@@ -272,7 +272,7 @@ ALTER TABLE `service_bookings`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1740753365;
 
 --
 -- Constraints for dumped tables
@@ -288,7 +288,7 @@ ALTER TABLE `freelancer_contacts`
 -- Constraints for table `service_bookings`
 --
 ALTER TABLE `service_bookings`
-  ADD CONSTRAINT `service_bookings_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `service_bookings_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `service_bookings_ibfk_2` FOREIGN KEY (`service_id`) REFERENCES `services` (`id`) ON DELETE CASCADE;
 COMMIT;
 

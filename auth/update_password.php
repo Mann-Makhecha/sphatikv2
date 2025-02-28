@@ -1,8 +1,8 @@
 <?php
 session_start();
-require '../includes/db.php'; // Include your database connection
+require_once '../includes/db.php';
+echo $profile_url;
 
-// Ensure user is logged in
 if (!isset($_SESSION['id'])) {
     echo "<p style='color: red;'>Unauthorized access.</p>";
     exit;
@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = "New password and confirm password do not match.";
     } else {
         try {
-            $stmt = $conn->prepare("SELECT password FROM users WHERE id = ?");
+            $stmt = $conn->prepare("SELECT password FROM users WHERE user_id = ?");
             $stmt->bind_param("i", $id);
             $stmt->execute();
             $result = $stmt->get_result();
