@@ -2,11 +2,11 @@
 require_once '../includes/db.php';
 require_once '../includes/header.php';
 if (!isset($_SESSION['id'])) {
-    header("Location: ../auth/user_login.php");
+    header("Location:../select.php");
     exit();
 }
 $user_id = $_SESSION['id'];
-$selectQ = "SELECT username, email, phone, address, created_at FROM users WHERE user_id = $user_id";
+$selectQ = "SELECT username, email, phone, address, created_at FROM $tbl_name WHERE $id_name = $user_id";
 $res = mysqli_query($conn, $selectQ);
 $user = mysqli_fetch_array($res);
 
@@ -17,9 +17,8 @@ $user = mysqli_fetch_array($res);
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>User Profile</title>
+        <title><?= $user['username'] ?>'s Profile</title>
         <link rel="stylesheet" href="../css/profile_style.css">
-        <link rel="stylesheet" href="../css/home_style.css">
     </head>
 
     <body>

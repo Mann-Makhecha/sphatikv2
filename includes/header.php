@@ -16,7 +16,7 @@ require_once 'global.php';
                 <li class="list-item"><a href="<?= BASE_URL ?>freelance.php">Freelance</a></li>
                 <li class="list-item"><a href="<?= BASE_URL ?>local_services.php">Local Services</a></li>
                 <?php if (isset($_SESSION['id'])): ?>
-                    <li class="list-item"><a href="<?= BASE_URL . $profile_url ?>">
+                    <li class="list-item"><a href="<?= BASE_URL ?>dashboards/profile.php">
                             <svg class="profile" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" height="2rem"
                                 width="2rem"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.-->
                                 <path

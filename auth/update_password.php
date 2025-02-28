@@ -1,7 +1,6 @@
 <?php
-session_start();
+require_once '../includes/global.php';
 require_once '../includes/db.php';
-echo $profile_url;
 
 if (!isset($_SESSION['id'])) {
     echo "<p style='color: red;'>Unauthorized access.</p>";
@@ -25,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = "New password and confirm password do not match.";
     } else {
         try {
-            $stmt = $conn->prepare("SELECT password FROM users WHERE user_id = ?");
+            $stmt = $conn->prepare("SELECT password FROM $tbl_name WHERE $id_name = ?");
             $stmt->bind_param("i", $id);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -35,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $error = "Current password is incorrect.";
             } else {
                 $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
-                $update_stmt = $conn->prepare("UPDATE users SET password = ? WHERE id = ?");
+                $update_stmt = $conn->prepare("UPDATE $tbl_name SET password = ? WHERE $id_name = ?");
                 $update_stmt->bind_param("si", $hashed_password, $id);
                 $update_stmt->execute();
 

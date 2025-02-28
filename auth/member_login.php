@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             setcookie("id", $id, time() + 82400 * 30);
             setcookie("type", "member", time() + 82400 * 30);
 
-            echo "<script> window.location.href='../dashboards/member.php';</script>";
+            echo "<script> window.location.href='../index.php';</script>";
             exit;
         } else {
             $error_message = "Invalid email or password.";

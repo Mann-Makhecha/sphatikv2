@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2025 at 03:46 PM
+-- Generation Time: Feb 28, 2025 at 05:11 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -96,6 +96,25 @@ INSERT INTO `freelancer_contacts` (`id`, `freelancer_id`, `name`, `email`, `mess
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `instructor_verifications`
+--
+
+CREATE TABLE `instructor_verifications` (
+  `verification_id` int(11) NOT NULL,
+  `mem_id` int(11) NOT NULL,
+  `gov_id_proof` varchar(255) NOT NULL,
+  `edu_qualification_proof` varchar(255) NOT NULL,
+  `employment_proof` varchar(255) NOT NULL,
+  `college_id_card` varchar(255) NOT NULL,
+  `employment_letter` varchar(255) NOT NULL,
+  `latest_payslip` varchar(255) NOT NULL,
+  `verification_status` enum('pending','verified','rejected') NOT NULL DEFAULT 'pending',
+  `submitted_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `members`
 --
 
@@ -104,7 +123,7 @@ CREATE TABLE `members` (
   `username` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `address` varchar(255) NOT NULL,
-  `phone` int(10) NOT NULL,
+  `phone` varchar(10) NOT NULL,
   `password` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `role` enum('instructor','local_service_provider','freelancer','user') NOT NULL DEFAULT 'user'
@@ -115,8 +134,8 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`mem_id`, `username`, `email`, `address`, `phone`, `password`, `created_at`, `role`) VALUES
-(1740753216, 'Samkit', 'samk@gmail.com', 'Khara Kuva No Kha Ho Degham', 2147483647, '$2y$10$n.O8t954e7Ch427lubG8LOYsn3XwJ0u1NnutQnk7I0abea2ICPI7S', '2025-02-28 14:33:37', 'freelancer'),
-(1740753966, 'Chirag', 'Chirag@gmail.com', 'Khara Kuva No Kha Ho Degham', 2147483647, '$2y$10$YYnt7CKneQcRicY58RRQN./5.tBaLmGKxZdR/WRPpLYZEsWpxuZ1.', '2025-02-28 14:46:06', 'freelancer');
+(1740753216, 'Samkit', 'samk@gmail.com', 'Khara Kuva No Kha Ho Degham', '2147483647', '$2y$10$n.O8t954e7Ch427lubG8LOYsn3XwJ0u1NnutQnk7I0abea2ICPI7S', '2025-02-28 14:33:37', 'freelancer'),
+(1740753966, 'Chirag', 'Chirag@gmail.com', 'Khara Kuva No Kha Ho Degham', '2147483647', '$2y$10$j2rY3sBQR4V925gDAIlyrO4CSwWB4094CNqwmd/.qrpDphiIcsXEq', '2025-02-28 14:46:06', 'instructor');
 
 -- --------------------------------------------------------
 
@@ -207,6 +226,13 @@ ALTER TABLE `freelancer_contacts`
   ADD KEY `freelancer_id` (`freelancer_id`);
 
 --
+-- Indexes for table `instructor_verifications`
+--
+ALTER TABLE `instructor_verifications`
+  ADD PRIMARY KEY (`verification_id`),
+  ADD KEY `mem_id` (`mem_id`);
+
+--
 -- Indexes for table `members`
 --
 ALTER TABLE `members`
@@ -257,6 +283,12 @@ ALTER TABLE `freelancer_contacts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `instructor_verifications`
+--
+ALTER TABLE `instructor_verifications`
+  MODIFY `verification_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
@@ -283,6 +315,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `freelancer_contacts`
   ADD CONSTRAINT `freelancer_contacts_ibfk_1` FOREIGN KEY (`freelancer_id`) REFERENCES `freelancers` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `instructor_verifications`
+--
+ALTER TABLE `instructor_verifications`
+  ADD CONSTRAINT `instructor_verifications_ibfk_1` FOREIGN KEY (`mem_id`) REFERENCES `members` (`mem_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `service_bookings`
