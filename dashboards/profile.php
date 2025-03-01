@@ -2,13 +2,21 @@
 require_once '../includes/db.php';
 require_once '../includes/header.php';
 if (!isset($_SESSION['id'])) {
-    header("Location:../select.php");
+    header("Location:../auth/select.php");
     exit();
 }
 $user_id = $_SESSION['id'];
-$selectQ = "SELECT username, email, phone, address, created_at,status FROM $tbl_name WHERE $id_name = $user_id";
+if ($_SESSION['type'] === "member") {
+    $selectQ = "SELECT username, email, phone, address, created_at,status FROM $tbl_name WHERE $id_name = $user_id";
+} else {
+    $selectQ = "SELECT username, email, phone, address, created_at FROM $tbl_name WHERE $id_name = $user_id";
+}
 $res = mysqli_query($conn, $selectQ);
-$user = mysqli_fetch_array($res);
+if ($res) {
+    $user = mysqli_fetch_array($res);
+} else {
+    echo "faied";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,12 +39,14 @@ $user = mysqli_fetch_array($res);
                 <h2>Settings</h2>
                 <ul>
                     <li>Account Settings</li>
-                    <?php if ($user['status'] === "pending") {
-                        echo
-                            "<li>Complete Profile</li>";
-                    } else {
-                        echo "
+                    <?php if (($_SESSION['type'] === "member")) {
+                        if ($user['status'] === "pending") {
+                            echo
+                                "<li>Complete Profile</li>";
+                        } else {
+                            echo "
                     <li>ADD Course</li>";
+                        }
                     }
                     ?>
                 </ul>
@@ -60,7 +70,8 @@ $user = mysqli_fetch_array($res);
                         <ul>
                             <form method="post">
                                 <li><a href="#">Edit Profile</a></li>
-                                <li><a href="../auth/update_password.php" name="pass">Change Password</a></li>
+                                <li><a href="<?= BASE_URL ?>/auth/update_password.php" name="pass">Change Password</a>
+                                </li>
                                 <li><a href="#">Manage Addresses</a></li>
                                 <li><a href="#">Payment Methods</a></li>
                                 <li><a href="<?= BASE_URL ?>auth/logout.php">Logout</a></li>
@@ -68,6 +79,9 @@ $user = mysqli_fetch_array($res);
                         </ul>
                     </div>
                 </div>
+            </section>
+            <section>
+
             </section>
         </main>
         <script>

@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['id'] = $id;
             $_SESSION['type'] = "user";
             setcookie("id", $id, time() + (86400 * 30), "/");
-            setcookie("type", "member", time() + (86400 * 30), "/");
+            setcookie("type", "user", time() + (86400 * 30), "/");
             echo "<script> window.location.href='../index.php';</script>";
             exit;
         } else {

@@ -1,6 +1,6 @@
 <?php
-session_start();
 require_once '../includes/db.php';
+require_once '../includes/global.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = trim($_POST['email']);
@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login</title>
-        <link rel="stylesheet" href="../css/form.css">
+        <link rel="stylesheet" href="<?= BASE_URL ?>/css/form.css">
     </head>
 
     <body>
