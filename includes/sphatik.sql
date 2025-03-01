@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2025 at 05:11 PM
+-- Generation Time: Mar 01, 2025 at 02:30 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `user_auth_db`
+-- Database: `sphatik`
 --
 
 -- --------------------------------------------------------
@@ -126,16 +126,18 @@ CREATE TABLE `members` (
   `phone` varchar(10) NOT NULL,
   `password` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `role` enum('instructor','local_service_provider','freelancer','user') NOT NULL DEFAULT 'user'
+  `role` enum('instructor','local_service_provider','freelancer','user') NOT NULL DEFAULT 'user',
+  `status` enum('verified','pending','rejected') NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `members`
 --
 
-INSERT INTO `members` (`mem_id`, `username`, `email`, `address`, `phone`, `password`, `created_at`, `role`) VALUES
-(1740753216, 'Samkit', 'samk@gmail.com', 'Khara Kuva No Kha Ho Degham', '2147483647', '$2y$10$n.O8t954e7Ch427lubG8LOYsn3XwJ0u1NnutQnk7I0abea2ICPI7S', '2025-02-28 14:33:37', 'freelancer'),
-(1740753966, 'Chirag', 'Chirag@gmail.com', 'Khara Kuva No Kha Ho Degham', '2147483647', '$2y$10$j2rY3sBQR4V925gDAIlyrO4CSwWB4094CNqwmd/.qrpDphiIcsXEq', '2025-02-28 14:46:06', 'instructor');
+INSERT INTO `members` (`mem_id`, `username`, `email`, `address`, `phone`, `password`, `created_at`, `role`, `status`) VALUES
+(1740753216, 'Samkit', 'samk@gmail.com', 'Khara Kuva No Kha Ho Degham', '9876543210', '$2y$10$n.O8t954e7Ch427lubG8LOYsn3XwJ0u1NnutQnk7I0abea2ICPI7S', '2025-02-28 14:33:37', 'freelancer', 'pending'),
+(1740753966, 'Chirag', 'Chirag@gmail.com', 'Khara Kuva No Kha Ho Degham', '1234567890', '$2y$10$j2rY3sBQR4V925gDAIlyrO4CSwWB4094CNqwmd/.qrpDphiIcsXEq', '2025-02-28 14:46:06', 'instructor', 'pending'),
+(1740821786, 'Samkit-Jain', 'samkitjain2809@gmail.coms', 'Khara Kuva No Kha Ho Degham', '8200700139', '$2y$10$qbO2fIg4SDRxvFWpM6h1qecLTL2Eh1AZEjoeArADumbn93yeW95Zm', '2025-03-01 09:36:26', 'instructor', 'pending');
 
 -- --------------------------------------------------------
 

@@ -1,5 +1,10 @@
 <?php
 require_once 'global.php';
+
+if (isset($_COOKIE["id"]) && isset($_COOKIE["type"])) {
+    $_SESSION["id"] = $_COOKIE["id"];
+    $_SESSION["type"] = $_COOKIE["type"];
+}
 ?>
 <link rel="stylesheet" href="<?= BASE_URL ?>/css/header.css">
 <header class="header">
@@ -23,7 +28,8 @@ require_once 'global.php';
                                     d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z" />
                             </svg></a></li>
                 <?php else: ?>
-                    <li class="list-item"><a href="<?= BASE_URL ?>select.php" class="btn btn-login" style="color:#fff;">Log
+                    <li class="list-item"><a href="<?= BASE_URL ?>auth/select.php" class="btn btn-login"
+                            style="color:#fff;">Log
                             in / Sign
                             up</a>
                     </li>
@@ -32,4 +38,4 @@ require_once 'global.php';
         </nav>
     </div>
 </header>
-<script src="<?php echo BASE_URL ?>js/home_js.js"></script>
+<script src="<?= BASE_URL ?>js/home_js.js"></script>

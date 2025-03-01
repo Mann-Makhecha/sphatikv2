@@ -50,14 +50,6 @@
             </div>
         </div>
         <script>
-            const sidebar = document.querySelector(".sidebar");
-            const mobileButton = document.querySelector(".mobile-button");
-
-            mobileButton.addEventListener("click", () => {
-                sidebar.classList.toggle("s-active");
-                mobileButton.classList.toggle("m-active");
-            });
-
             function showModule(moduleId) {
                 document.querySelectorAll(".module").forEach((module) => {
                     module.style.display = "none";

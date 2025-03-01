@@ -18,7 +18,8 @@
 }
 
 .sidebar h2 {
-  font-size: 20px;
+  font-size: 1.2rem;
+  margin: 0.75rem auto;
 }
 
 .sidebar ul {
@@ -57,7 +58,8 @@
 }
 
 .mobile-button {
-  position: absolute;
+  position: fixed;
+  top: 60px;
   z-index: 11;
   display: none;
   color: #6d28d9;

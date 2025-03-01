@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "user_auth_db");
+$conn = new mysqli("localhost", "root", "", "sphatik");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }

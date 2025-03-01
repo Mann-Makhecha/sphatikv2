@@ -1,11 +1,3 @@
-<?php
-if (isset($_COOKIE["id"]) && isset($_COOKIE["type"])) {
-    $_SESSION["id"] = $_COOKIE["id"];
-    $_SESSION["type"] = $_COOKIE["type"];
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
