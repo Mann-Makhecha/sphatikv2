@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 01, 2025 at 02:30 PM
+-- Generation Time: Mar 01, 2025 at 05:56 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -96,20 +96,20 @@ INSERT INTO `freelancer_contacts` (`id`, `freelancer_id`, `name`, `email`, `mess
 -- --------------------------------------------------------
 
 --
--- Table structure for table `instructor_verifications`
+-- Table structure for table `instructor_documents`
 --
 
-CREATE TABLE `instructor_verifications` (
-  `verification_id` int(11) NOT NULL,
+CREATE TABLE `instructor_documents` (
+  `doc_id` int(11) NOT NULL,
   `mem_id` int(11) NOT NULL,
+  `college_name` varchar(255) NOT NULL,
+  `designation` varchar(100) NOT NULL,
   `gov_id_proof` varchar(255) NOT NULL,
-  `edu_qualification_proof` varchar(255) NOT NULL,
-  `employment_proof` varchar(255) NOT NULL,
+  `qualification_proof` varchar(255) NOT NULL,
   `college_id_card` varchar(255) NOT NULL,
   `employment_letter` varchar(255) NOT NULL,
   `latest_payslip` varchar(255) NOT NULL,
-  `verification_status` enum('pending','verified','rejected') NOT NULL DEFAULT 'pending',
-  `submitted_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `uploaded_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -127,7 +127,7 @@ CREATE TABLE `members` (
   `password` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `role` enum('instructor','local_service_provider','freelancer','user') NOT NULL DEFAULT 'user',
-  `status` enum('verified','pending','rejected') NOT NULL DEFAULT 'pending'
+  `status` enum('verified','pending','rejected','submitted') NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -228,10 +228,10 @@ ALTER TABLE `freelancer_contacts`
   ADD KEY `freelancer_id` (`freelancer_id`);
 
 --
--- Indexes for table `instructor_verifications`
+-- Indexes for table `instructor_documents`
 --
-ALTER TABLE `instructor_verifications`
-  ADD PRIMARY KEY (`verification_id`),
+ALTER TABLE `instructor_documents`
+  ADD PRIMARY KEY (`doc_id`),
   ADD KEY `mem_id` (`mem_id`);
 
 --
@@ -285,10 +285,10 @@ ALTER TABLE `freelancer_contacts`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `instructor_verifications`
+-- AUTO_INCREMENT for table `instructor_documents`
 --
-ALTER TABLE `instructor_verifications`
-  MODIFY `verification_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `instructor_documents`
+  MODIFY `doc_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1740848016;
 
 --
 -- AUTO_INCREMENT for table `services`
@@ -319,10 +319,10 @@ ALTER TABLE `freelancer_contacts`
   ADD CONSTRAINT `freelancer_contacts_ibfk_1` FOREIGN KEY (`freelancer_id`) REFERENCES `freelancers` (`id`) ON DELETE CASCADE;
 
 --
--- Constraints for table `instructor_verifications`
+-- Constraints for table `instructor_documents`
 --
-ALTER TABLE `instructor_verifications`
-  ADD CONSTRAINT `instructor_verifications_ibfk_1` FOREIGN KEY (`mem_id`) REFERENCES `members` (`mem_id`) ON DELETE CASCADE;
+ALTER TABLE `instructor_documents`
+  ADD CONSTRAINT `instructor_documents_ibfk_1` FOREIGN KEY (`mem_id`) REFERENCES `members` (`mem_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `service_bookings`
