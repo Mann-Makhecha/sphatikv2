@@ -7,7 +7,7 @@ if (!isset($_SESSION['id'])) {
 }
 
 $user_id = $_SESSION['id'];
-$var = $var2 = false;
+$var = false;
 
 // Fetch user details
 if ($_SESSION['type'] === "member") {
@@ -101,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !$var) {
                 <ul>
                     <li class="accountSett">Account Settings</li>
                     <?php if (($_SESSION['type'] === "member")) {
-                        if ($user['status'] === "pending" && $var && !$var2) {
+                        if ($user['status'] === "pending" && !$var) {
                             echo
                                 "<li class='compProfile'><a href='#completeProfile'>Complete Profile</a></li>";
                         }
