@@ -40,7 +40,7 @@ $result = $conn->query($query);
 </head>
 
 <body>
-    <?php include 'includes/mem_head.php'; ?>
+    <?php include 'includes/header.php'; ?>
 
     <section class="services">
         <div class="container">
