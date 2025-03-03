@@ -105,10 +105,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !$var) {
                             echo
                                 "<li class='compProfile'><a href='#completeProfile'>Complete Profile</a></li>";
                         }
-                        if ($user['status'] === "verified") {
+                        if ($user['status'] === "verified" && $user['role'] === "instructor") {
                             echo "
                                 <li class='addCour'>ADD Course</li>";
                         }
+                    
+
+                    if ($user['status'] === "verified" && $user['role'] === "admin") {
+                        echo "
+                            <li class='addCour'><a href='admin.php'>GO TO ADMIN PANEL</a></li>";
+                    }
                     }
                     ?>
                 </ul>

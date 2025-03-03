@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error_message = "Invalid email or password.";
     }
 
+   
     $stmt = $conn->prepare("SELECT mem_id, username, password FROM members WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
