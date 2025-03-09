@@ -21,5 +21,10 @@ if (isset($_SESSION['type'])) {
         --link-color: #58a6ff;
         --header-color: #f0f6fc;
         --muted-text: #8b949e;
+        --light-gray: #30363d;
+        --white: #f0f6fc;
+        --error-bg: #f8d7da;
+        --error-text: #721c24;
+        --error-border: #f5c6cb;
     }
 </style>

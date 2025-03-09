@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once '../includes/global.php';
 require_once '../includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -48,19 +48,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login</title>
-        <link rel="stylesheet" href="../css/form.css">
+        <link rel="stylesheet" href="<?= BASE_URL ?>css/form.css">
     </head>
 
-    <body>
-        <div class="container">
+    <body class="login-body">
+        <div class="login-container">
             <div class="left">
                 <h2>Login</h2>
                 <?php if (isset($error_message)) {
                     echo "<p style='color:red;'>$error_message</p>";
                 } ?>
                 <form name="loginForm" method="POST" action="user_login.php">
-                    <input type="email" name="email" placeholder="Email" required>
-                    <input type="password" name="password" placeholder="Password" required>
+                    <!-- <label for="email">Email:</label><br> -->
+                    <input type="email" name="email" placeholder="Enter email" id="email" required><br>
+                    <!-- <label for="password">Password:</label><br> -->
+                    <input type="password" name="password" placeholder="Enter password" id="password" required><br><br>
                     <button type="submit">Login</button>
                 </form>
                 <p>Don't have an account? <a href="register.php">Register</a></p>

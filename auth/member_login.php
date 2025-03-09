@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $error_message = "Invalid email or password.";
     }
 
-   
+
     $stmt = $conn->prepare("SELECT mem_id, username, password FROM members WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -53,16 +53,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <link rel="stylesheet" href="<?= BASE_URL ?>/css/form.css">
     </head>
 
-    <body>
-        <div class="container">
+    <body class="login-body">
+        <div class="login-container">
             <div class="left">
                 <h2>Login</h2>
                 <?php if (isset($error_message)) {
                     echo "<p style='color:red;'>$error_message</p>";
                 } ?>
                 <form name="loginForm" method="POST" action="member_login.php">
-                    <input type="email" name="email" placeholder="Email" required>
-                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="email" name="email" placeholder="Email" required><br>
+                    <input type="password" name="password" placeholder="Password" required><br><br>
                     <button type="submit">Login</button>
                 </form>
                 <p>Don't have an account? <a href="member_register.php">Register</a></p>

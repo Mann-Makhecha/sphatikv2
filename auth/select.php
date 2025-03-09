@@ -1,4 +1,5 @@
 <?php
+require_once '../includes/global.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +8,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Welcome to Sphatik</title>
-        <link rel="stylesheet" href="../css/select_style.css">
+        <link rel="stylesheet" href="<?= BASE_URL ?>css/select_style.css">
     </head>
 
     <body>

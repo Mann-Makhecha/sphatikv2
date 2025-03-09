@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once '../includes/global.php';
 require_once '../includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -75,8 +75,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <title>Register</title>
     </head>
 
-    <body>
-        <div class="container">
+    <body class="login-body">
+        <div class="login-container">
             <div class="left">
                 <h2>Register</h2>
                 <?php if (!empty($errors)): ?>

@@ -1,0 +1,93 @@
+.container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background: var(--light-gray);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Heading */
+.container h2 {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+/* Input Fields */
+.container label {
+  display: block;
+  font-size: 1rem;
+  color: var(--text-color);
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  font-size: 1rem;
+  background: var(--bg-light);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+/* Button Styling */
+.container button {
+  width: 100%;
+  padding: 10px;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.container button:hover {
+  background: var(--secondary-color);
+}
+
+/* Error & Success Messages */
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.success {
+  color: green;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .container h2 {
+    font-size: 1.5rem;
+  }
+
+  .container input {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+
+  .container button {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}

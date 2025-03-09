@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once '../includes/global.php';
 require_once '../includes/db.php';
 $errors = [];
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -78,8 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <link rel="stylesheet" href="../css/form.css">
     </head>
 
-    <body>
-        <div class="container">
+    <body class="login-body">
+        <div class="login-container">
             <div class="left">
                 <h2>Register</h2>
 
@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <option value="freelancer" <?php echo (isset($_POST['role']) && $_POST['role'] === 'freelancer') ? 'selected' : ''; ?>>Freelancer</option>
                         <option value="instructor" <?php echo (isset($_POST['role']) && $_POST['role'] === 'delivery_partner') ? 'selected' : ''; ?>>Instructor</option>
                         <option value="local_service_provider" <?php echo (isset($_POST['role']) && $_POST['role'] === 'local_service_provider') ? 'selected' : ''; ?>>Service Provider</option>
-                    </select>
+                    </select><br><br>
 
                     <button type="submit">Register</button>
                 </form>

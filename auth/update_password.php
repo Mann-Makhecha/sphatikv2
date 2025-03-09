@@ -39,9 +39,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $update_stmt->execute();
 
                 $success = "Password updated successfully.";
+                $update_stmt->close();
             }
             $stmt->close();
-            $update_stmt->close();
             $conn->close();
         } catch (Exception $e) {
             $error = "Database error: " . $e->getMessage();
@@ -56,20 +56,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Change Password</title>
-        <link rel="stylesheet" href="../css/form.css">
+        <link rel="stylesheet" href="../css/update.css">
         <style>
-            .error {
-                color: red;
-            }
-
-            .success {
-                color: green;
-            }
-
-            .container {
-                flex-direction: column;
-                padding: 20px;
-            }
         </style>
     </head>
 
@@ -85,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="current_password">Current Password:</label>
                 <input type="password" id="current_password" name="current_password" required><br>
 
-                <label for="new_password">New Password:</label><br>
+                <label for="new_password">New Password:</label>
                 <input type="password" id="new_password" name="new_password" required><br>
 
                 <label for="confirm_password">Confirm New Password:</label>

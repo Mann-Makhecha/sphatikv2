@@ -2,7 +2,6 @@
   margin-top: 4rem;
 }
 
-/* Profile & Form Container - Matched with Course Card Styling */
 .profile-container,
 .form-container {
   max-width: 900px;
@@ -55,7 +54,6 @@ p {
   color: var(--muted-text);
 }
 
-/* Order History Table */
 .order-history table {
   width: 100%;
   border-collapse: collapse;
@@ -73,7 +71,6 @@ p {
   color: white;
 }
 
-/* Account Settings List */
 .account-settings ul {
   list-style: none;
   padding: 0;
