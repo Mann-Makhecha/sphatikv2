@@ -42,7 +42,7 @@ $result = $conn->query($query);
 
         <section class="services">
             <div class="container">
-                <h2>Available Services</h2>
+                <h1>Available Services</h1>
                 <div class="services-grid">
                     <?php while ($row = $result->fetch_assoc()): ?>
                         <div class="service-card">

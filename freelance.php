@@ -28,7 +28,8 @@ $result = $conn->query($query);
                             <img src="<?php echo htmlspecialchars($row['profile_image']); ?>" alt="Freelancer Profile">
                             <h3><?php echo htmlspecialchars($row['name']); ?></h3>
                             <p>Expertise: <?php echo htmlspecialchars($row['expertise']); ?></p>
-                            <a href="contact_freelance.php?freelancer_id=<?php echo $row['id']; ?>" class="btn">Contact
+                            <a href="<?= BASE_URL ?>pages/contact_freelance.php?freelancer_id=<?php echo $row['id']; ?>"
+                                class="btn">Contact
                                 Freelancer</a>
 
                         </div>

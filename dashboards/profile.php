@@ -135,11 +135,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !$var) {
                         <h3>Account Settings</h3>
                         <ul>
                             <form method="post">
-                                <li><a href="#">Edit Profile</a></li>
-                                <li><a href="<?= BASE_URL ?>/auth/update_password.php" name="pass">Change Password</a>
+                                <li><a href="<?= BASE_URL ?>auth/editprofile.php">Edit Profile</a></li>
+                                <li><a href="<?= BASE_URL ?>auth/update_password.php" name="pass">Change Password</a>
                                 </li>
-                                <li><a href="#">Manage Addresses</a></li>
-                                <li><a href="#">Payment Methods</a></li>
+                                <li><a href="#" onclick="alert('This feature will be available soon')">Manage
+                                        Addresses</a></li>
+                                <!-- <li><a href="#">Payment Methods</a></li> -->
                                 <li><a href="<?= BASE_URL ?>auth/logout.php">Logout</a></li>
                             </form>
                         </ul>

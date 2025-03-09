@@ -1,32 +1,431 @@
-<?php
-require_once '../includes/header.php';
-require_once '../includes/db.php';
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
+
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="<?= BASE_URL ?>/css/innerCourse.css">
-    <link rel="stylesheet" href="<?= BASE_URL ?>/css/admin.css">
-</head>
-<body>
-<button class="mobile-button"><svg xmlns="http://www.w3.org/2000/svg" height="2.2rem" viewBox="0 -960 960 960"
-                width="2.2rem" class="backSvg">
-                <path d="m321-80-71-71 329-329-329-329 71-71 400 400L321-80Z" />
-            </svg></button>
-    <main><div class="sidebar">
-                <h2>Course Modules</h2>
-                <ul>
-                    <li>Module 1</li>
-                    <li>Module 2</li>
-                    <li>Module 3</li>
-                </ul>
-            </div></main>
-            <script src="<?= BASE_URL ?>js/profile.js">
-        </script>
-</body>
+    <title>SPHATIK - Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/admin.css">
+  </head>
+
+  <body>
+    <div class="dashboard">
+      <!-- Sidebar -->
+      <div class="sidebar" id="sidebar">
+        <!-- Logo -->
+        <div class="logo-container">
+          <h1 class="logo" id="logo">SPHATIK</h1>
+          <h1 class="logo-small" id="logo-small">SP</h1>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="nav">
+          <button class="nav-item active" data-menu="dashboard">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon">
+              <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+              <polyline points="14 2 14 8 20 8" />
+              <path d="m9 15 2 2 4-4" />
+            </svg>
+            <span class="nav-text">Document Verification</span>
+          </button>
+
+          <button class="nav-item" data-menu="user-management">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+            <span class="nav-text">User Management</span>
+          </button>
+
+          <button class="nav-item" data-menu="member-management">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <line x1="19" x2="19" y1="8" y2="14" />
+              <line x1="16" x2="22" y1="11" y2="11" />
+            </svg>
+            <span class="nav-text">Member Management</span>
+          </button>
+
+          <button class="nav-item" data-menu="site-settings">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nav-icon">
+              <path
+                d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+            <span class="nav-text">Site Settings</span>
+          </button>
+        </nav>
+
+        <!-- Collapse button -->
+        <div class="sidebar-footer">
+          <button id="toggle-sidebar" class="toggle-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="chevron-left">
+              <path d="m15 18-6-6 6-6" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="chevron-right">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content" id="main-content">
+        <!-- Top Header -->
+        <header class="header">
+          <div class="header-left">
+            <button id="mobile-toggle" class="mobile-toggle">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="menu-icon">
+                <line x1="4" x2="20" y1="12" y2="12" />
+                <line x1="4" x2="20" y1="6" y2="6" />
+                <line x1="4" x2="20" y1="18" y2="18" />
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="x-icon">
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            </button>
+            <h2 class="page-title" id="page-title">Document Verification</h2>
+          </div>
+
+          <div class="header-right">
+            <div class="search-container">
+              <input type="text" placeholder="Search..." class="search-input">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="search-icon">
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+            </div>
+
+            <button class="notification-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bell-icon">
+                <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
+                <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
+              </svg>
+              <span class="notification-dot"></span>
+            </button>
+
+            <div class="user-profile">
+              <img
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                alt="Admin avatar" class="avatar">
+              <span class="user-name">Admin User</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Content Area -->
+        <main class="content" id="content">
+          <!-- Dashboard Content -->
+          <div class="content-section active" id="dashboard-content">
+            <div class="card">
+              <h3 class="card-title">Welcome to SPHATIK Dashboard</h3>
+              <p class="card-text">
+                SPHATIK Integrated Workforce Management System provides comprehensive tools for document verification,
+                user management, and system administration.
+              </p>
+              <div class="stats-grid">
+                <div class="stat-card">
+                  <h4 class="stat-title">Pending Verifications</h4>
+                  <p class="stat-value">24</p>
+                </div>
+                <div class="stat-card">
+                  <h4 class="stat-title">Active Users</h4>
+                  <p class="stat-value">156</p>
+                </div>
+                <div class="stat-card">
+                  <h4 class="stat-title">New Members</h4>
+                  <p class="stat-value">12</p>
+                </div>
+                <div class="stat-card">
+                  <h4 class="stat-title">System Alerts</h4>
+                  <p class="stat-value">3</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3 class="card-title">Recent Activities</h3>
+              <div class="activities">
+                <div class="activity-item">
+                  <div class="activity-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                      <polyline points="14 2 14 8 20 8" />
+                      <path d="m9 15 2 2 4-4" />
+                    </svg>
+                  </div>
+                  <div class="activity-content">
+                    <p class="activity-text">Document #45678 verified</p>
+                    <p class="activity-time">2 hours ago</p>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <line x1="19" x2="19" y1="8" y2="14" />
+                      <line x1="16" x2="22" y1="11" y2="11" />
+                    </svg>
+                  </div>
+                  <div class="activity-content">
+                    <p class="activity-text">New member registered</p>
+                    <p class="activity-time">5 hours ago</p>
+                  </div>
+                </div>
+                <div class="activity-item">
+                  <div class="activity-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path
+                        d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                  </div>
+                  <div class="activity-content">
+                    <p class="activity-text">System settings updated</p>
+                    <p class="activity-time">1 day ago</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- User Management Content -->
+          <div class="content-section" id="user-management-content">
+            <div class="card">
+              <h3 class="card-title">User Management</h3>
+              <p class="card-text">
+                Manage user accounts, permissions, and access controls.
+              </p>
+              <div class="table-container">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="user-cell">
+                          <img
+                            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt="" class="user-avatar">
+                          <div class="user-info">
+                            <div class="user-name">Jane Cooper</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>jane.cooper@example.com</td>
+                      <td>Admin</td>
+                      <td><span class="status-badge status-active">Active</span></td>
+                      <td><a href="#" class="action-link">Edit</a></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="user-cell">
+                          <img
+                            src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt="" class="user-avatar">
+                          <div class="user-info">
+                            <div class="user-name">Michael Foster</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>michael.foster@example.com</td>
+                      <td>Manager</td>
+                      <td><span class="status-badge status-active">Active</span></td>
+                      <td><a href="#" class="action-link">Edit</a></td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <div class="user-cell">
+                          <img
+                            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt="" class="user-avatar">
+                          <div class="user-info">
+                            <div class="user-name">Robert Johnson</div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>robert.johnson@example.com</td>
+                      <td>User</td>
+                      <td><span class="status-badge status-pending">Pending</span></td>
+                      <td><a href="#" class="action-link">Edit</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Member Management Content -->
+          <div class="content-section" id="member-management-content">
+            <div class="card">
+              <h3 class="card-title">Member Management</h3>
+              <p class="card-text">
+                Manage organization members, roles, and departments.
+              </p>
+              <div class="grid-container">
+                <div class="grid-card">
+                  <h4 class="grid-card-title">Department Overview</h4>
+                  <div class="department-list">
+                    <div class="department-item">
+                      <span class="department-name">Engineering</span>
+                      <span class="department-count">45 members</span>
+                    </div>
+                    <div class="department-item">
+                      <span class="department-name">Marketing</span>
+                      <span class="department-count">32 members</span>
+                    </div>
+                    <div class="department-item">
+                      <span class="department-name">Finance</span>
+                      <span class="department-count">18 members</span>
+                    </div>
+                    <div class="department-item">
+                      <span class="department-name">Human Resources</span>
+                      <span class="department-count">12 members</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="grid-card">
+                  <h4 class="grid-card-title">Recent Member Activities</h4>
+                  <div class="member-activities">
+                    <div class="member-activity">
+                      <img
+                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt="" class="member-avatar">
+                      <div class="member-activity-info">
+                        <p class="member-activity-text">Jane Cooper updated profile</p>
+                        <p class="member-activity-time">2 hours ago</p>
+                      </div>
+                    </div>
+                    <div class="member-activity">
+                      <img
+                        src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt="" class="member-avatar">
+                      <div class="member-activity-info">
+                        <p class="member-activity-text">Michael Foster joined Engineering</p>
+                        <p class="member-activity-time">1 day ago</p>
+                      </div>
+                    </div>
+                    <div class="member-activity">
+                      <img
+                        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        alt="" class="member-avatar">
+                      <div class="member-activity-info">
+                        <p class="member-activity-text">Robert Johnson submitted documents</p>
+                        <p class="member-activity-time">3 days ago</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Site Settings Content -->
+          <div class="content-section" id="site-settings-content">
+            <div class="card">
+              <h3 class="card-title">Site Settings</h3>
+              <p class="card-text">
+                Configure system settings, preferences, and global parameters.
+              </p>
+              <div class="settings-container">
+                <div class="settings-section">
+                  <h4 class="settings-title">General Settings</h4>
+                  <div class="form-group">
+                    <label for="site-name" class="form-label">Site Name</label>
+                    <input type="text" id="site-name" class="form-input" value="SPHATIK">
+                  </div>
+                  <div class="form-group">
+                    <label for="site-description" class="form-label">Site Description</label>
+                    <textarea id="site-description" rows="3"
+                      class="form-textarea">Integrated Workforce Management System</textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="timezone" class="form-label">Timezone</label>
+                    <select id="timezone" class="form-select">
+                      <option>UTC</option>
+                      <option>America/New_York</option>
+                      <option>Europe/London</option>
+                      <option>Asia/Tokyo</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="settings-section">
+                  <h4 class="settings-title">Email Settings</h4>
+                  <div class="form-group">
+                    <label for="email-from" class="form-label">From Email</label>
+                    <input type="email" id="email-from" class="form-input" value="noreply@sphatik.com">
+                  </div>
+                  <div class="form-group">
+                    <label for="smtp-host" class="form-label">SMTP Host</label>
+                    <input type="text" id="smtp-host" class="form-input" value="smtp.example.com">
+                  </div>
+                  <div class="form-group">
+                    <div class="checkbox-container">
+                      <input id="enable-notifications" type="checkbox" class="form-checkbox" checked>
+                      <label for="enable-notifications" class="checkbox-label">Enable Email Notifications</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="settings-section">
+                  <h4 class="settings-title">Security Settings</h4>
+                  <div class="form-group">
+                    <div class="checkbox-container">
+                      <input id="two-factor" type="checkbox" class="form-checkbox">
+                      <label for="two-factor" class="checkbox-label">Enable Two-Factor Authentication</label>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="session-timeout" class="form-label">Session Timeout (minutes)</label>
+                    <input type="number" id="session-timeout" class="form-input" value="30">
+                  </div>
+                  <div class="form-group">
+                    <label for="password-policy" class="form-label">Password Policy</label>
+                    <select id="password-policy" class="form-select">
+                      <option>Standard</option>
+                      <option>Strong</option>
+                      <option>Very Strong</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-actions">
+                  <button type="button" class="btn-primary">Save Settings</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="../js/script.js"></script>
+  </body>
+
 </html>

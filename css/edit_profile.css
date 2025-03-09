@@ -1,0 +1,89 @@
+:root {
+  --primary-color: #238636;
+  --secondary-color: #2ea043;
+  --text-color: #c9d1d9;
+  --bg-dark: #0d1117;
+  --bg-light: #161b22;
+  --border-color: #30363d;
+  --white: #f0f6fc;
+  --error-bg: #f8d7da;
+  --error-text: #721c24;
+  --error-border: #f5c6cb;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: var(--bg-dark);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 90%;
+  max-width: 400px;
+  background: var(--bg-light);
+  padding: 30px;
+  margin: 50px auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px var(--border-color);
+}
+
+h2 {
+  color: var(--primary-color);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  text-align: left;
+  font-weight: bold;
+  color: var(--white);
+}
+
+input {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background: var(--bg-dark);
+  color: var(--text-color);
+  width: 100%;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+button {
+  padding: 10px;
+  background: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: var(--secondary-color);
+}
+
+.success {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.error {
+  background: var(--error-bg);
+  color: var(--error-text);
+  border: 1px solid var(--error-border);
+  padding: 10px;
+  border-radius: 5px;
+}
