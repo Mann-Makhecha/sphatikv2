@@ -1,5 +1,4 @@
 <?php
-session_start();
 include './includes/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -30,38 +29,38 @@ $result = $conn->query($query);
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Local Services</title>
-    <link rel="stylesheet" href="./css/services_style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="./css/home_style.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Local Services</title>
+        <link rel="stylesheet" href="./css/services_style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="stylesheet" href="./css/home_style.css">
+    </head>
 
-<body>
-    <?php include 'includes/header.php'; ?>
+    <body>
+        <?php include 'includes/header.php'; ?>
 
-    <section class="services">
-        <div class="container">
-            <h2>Available Services</h2>
-            <div class="services-grid">
-                <?php while ($row = $result->fetch_assoc()): ?>
-                    <div class="service-card">
-                        <i class="<?php echo htmlspecialchars($row['icon']); ?>"></i>
-                        <h3><?php echo htmlspecialchars($row['name']); ?></h3>
-                        <p><?php echo htmlspecialchars($row['description']); ?></p>
+        <section class="services">
+            <div class="container">
+                <h2>Available Services</h2>
+                <div class="services-grid">
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <div class="service-card">
+                            <i class="<?php echo htmlspecialchars($row['icon']); ?>"></i>
+                            <h3><?php echo htmlspecialchars($row['name']); ?></h3>
+                            <p><?php echo htmlspecialchars($row['description']); ?></p>
 
-                        <a href="book_service.php?service_id=<?php echo $row['id']; ?>" class="btn">Book Now</a>
-                    </div>
-                <?php endwhile; ?>
+                            <a href="book_service.php?service_id=<?php echo $row['id']; ?>" class="btn">Book Now</a>
+                        </div>
+                    <?php endwhile; ?>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
 
 
-    <?php include 'includes/footer.php'; ?>
-</body>
+        <?php include 'includes/footer.php'; ?>
+    </body>
 
 </html>

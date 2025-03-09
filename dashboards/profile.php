@@ -76,8 +76,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !$var) {
     mysqli_close($conn);
 }
 ?>
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -109,12 +107,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !$var) {
                             echo "
                                 <li class='addCour'>ADD Course</li>";
                         }
-                    
 
-                    if ($user['status'] === "verified" && $user['role'] === "admin") {
-                        echo "
+
+                        if ($user['status'] === "verified" && $user['role'] === "admin") {
+                            echo "
                             <li class='addCour'><a href='admin.php'>GO TO ADMIN PANEL</a></li>";
-                    }
+                        }
                     }
                     ?>
                 </ul>
