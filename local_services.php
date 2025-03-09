@@ -1,6 +1,6 @@
 <?php
 include './includes/db.php';
-
+include 'includes/header.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user_id = $_SESSION['user_id'];
     $service_id = $_POST['service_id'];
@@ -33,13 +33,12 @@ $result = $conn->query($query);
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Local Services</title>
-        <link rel="stylesheet" href="./css/services_style.css">
+        <link rel="stylesheet" href="<?= BASE_URL ?>css/services.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link rel="stylesheet" href="./css/home_style.css">
     </head>
 
     <body>
-        <?php include 'includes/header.php'; ?>
 
         <section class="services">
             <div class="container">

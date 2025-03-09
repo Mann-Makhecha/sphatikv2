@@ -56,7 +56,13 @@
                     module.style.display = "none";
                 });
                 document.getElementById(moduleId).style.display = "block";
-            }</script>
+            }
+            const sideMenu = document.querySelector(".sidebar");
+            const mobileButton = document.querySelector(".mobile-button");
+            mobileButton.addEventListener("click", () => {
+                sideMenu.classList.toggle("s-active");
+            });
+        </script>
     </body>
 
 </html>

@@ -1,18 +1,13 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background: #f4f4f4;
-}
-
-.container {
+.course-container {
   width: 80%;
   margin: 0 auto;
 }
 
 .courses-page {
   padding: 20px 0;
+  margin-top: 4rem;
+  background: var(--bg-dark);
+  color: var(--text-color);
 }
 
 .courses-grid {
@@ -25,11 +20,12 @@ body {
 .courses-page h1 {
   text-align: left;
   margin-bottom: 40px;
+  color: var(--header-color);
 }
 
 .course-card {
-  background: #fff;
-  border: 1px solid #ddd;
+  background: var(--bg-light);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
   width: 280px;
@@ -49,20 +45,20 @@ body {
 .course-card h3 {
   margin: 15px 0;
   font-size: 20px;
-  color: #333;
+  color: var(--header-color);
 }
 
 .course-card p {
   padding: 0 15px;
   font-size: 14px;
-  color: #555;
+  color: var(--muted-text);
 }
 
 .course-card .btn {
   display: block;
   margin: 15px auto;
   padding: 10px 20px;
-  background: #6d28d9;
+  background: var(--primary-color);
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
@@ -71,7 +67,5 @@ body {
 }
 
 .course-card .btn:hover {
-  background: #6d28d9;
+  background: var(--secondary-color);
 }
-
-/* Course Page*/

@@ -83,9 +83,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !$var) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><?= $user['username'] ?>'s Profile</title>
-        <link rel="stylesheet" href="<?= BASE_URL ?>/css/profile_style.css">
-        <link rel="stylesheet" href="<?= BASE_URL ?>/css/innerCourse.css">
-        <link rel="stylesheet" href="<?= BASE_URL ?>/css/form2.css">
+        <link rel="stylesheet" href="<?= BASE_URL ?>css/profile.css">
+        <link rel="stylesheet" href="<?= BASE_URL ?>css/innerCourse.css">
+        <link rel="stylesheet" href="<?= BASE_URL ?>css/form2.css">
     </head>
 
     <body>

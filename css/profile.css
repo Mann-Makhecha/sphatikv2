@@ -1,0 +1,116 @@
+.myPage {
+  margin-top: 4rem;
+}
+
+/* Profile & Form Container - Matched with Course Card Styling */
+.profile-container,
+.form-container {
+  max-width: 900px;
+  margin: 2.5rem auto;
+  padding: 2rem;
+  background: var(--bg-light);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px var(--border-color);
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.profile-container:hover,
+.form-container:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px var(--border-color);
+}
+
+/* Profile Header */
+.profile-header {
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--header-color);
+}
+
+.profile-header h2 {
+  color: var(--header-color);
+  font-size: 2rem;
+}
+
+/* Profile Sections */
+.profile-content {
+  margin-top: 1.5rem;
+}
+
+.profile-info,
+.order-history,
+.account-settings {
+  margin-bottom: 2rem;
+}
+
+h3 {
+  color: var(--header-color);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1rem;
+  color: var(--muted-text);
+}
+
+/* Order History Table */
+.order-history table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order-history th,
+.order-history td {
+  padding: 0.8rem;
+  border: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.order-history th {
+  background: var(--header-color);
+  color: white;
+}
+
+/* Account Settings List */
+.account-settings ul {
+  list-style: none;
+  padding: 0;
+}
+
+.account-settings ul li {
+  padding: 0.5rem 0;
+}
+
+.account-settings ul li a {
+  text-decoration: none;
+  color: var(--link-color);
+  font-weight: bold;
+}
+
+.account-settings ul li a:hover {
+  text-decoration: underline;
+}
+
+.hide {
+  display: none;
+}
+
+.profile-container .btn,
+.form-container .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background: var(--link-color);
+  color: var(--text-color);
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.profile-container .btn:hover,
+.form-container .btn:hover {
+  background: var(--secondary-color);
+  transform: scale(1.05);
+}

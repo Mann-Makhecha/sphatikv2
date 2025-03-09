@@ -1,28 +1,32 @@
-.freelancers-page {
-  padding: 20px 0;
-  margin-top: 4rem;
-  background: var(--bg-dark);
+.services {
+  margin-top: 1rem;
+  padding: 4rem 0;
+  background: var(--bg-darker);
   color: var(--text-color);
 }
-.freelance-container {
-  width: 80%;
-  margin: 0 auto;
+
+.services h2 {
+  font-size: 2.5rem;
+  color: var(--header-color);
+  margin-bottom: 2rem;
 }
 
-.freelancers-grid {
+.services-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 2rem 0;
+  max-width: 1200px;
+  margin: 0 auto;
   justify-content: center;
 }
 
-.freelancer-card {
+.service-card {
   background: var(--bg-light);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
-  width: 280px;
+  width: 300px;
+  padding: 2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
   display: flex;
@@ -31,32 +35,32 @@
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.freelancer-card:hover {
+.service-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 8px var(--border-color);
 }
 
-.freelancer-card img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
+.service-card i {
+  font-size: 2.5rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
 }
 
-.freelancer-card h3 {
-  margin: 15px 0;
-  font-size: 20px;
+.service-card h3 {
+  font-size: 1.5rem;
   color: var(--header-color);
+  margin-bottom: 0.5rem;
 }
 
-.freelancer-card p {
-  padding: 0 15px;
-  font-size: 14px;
+.service-card p {
+  font-size: 1rem;
   color: var(--muted-text);
+  margin-bottom: 1rem;
 }
 
-.freelancer-card .btn {
+.service-card .btn {
   display: block;
-  margin: 15px auto;
+  margin: 10px auto 0;
   padding: 10px 20px;
   background: var(--primary-color);
   color: var(--text-color);
@@ -68,7 +72,7 @@
   transition: background 0.3s, transform 0.2s;
 }
 
-.freelancer-card .btn:hover {
+.service-card .btn:hover {
   background: var(--secondary-color);
   transform: scale(1.05);
 }

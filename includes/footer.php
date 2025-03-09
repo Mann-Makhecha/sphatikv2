@@ -1,4 +1,6 @@
-<link rel="stylesheet" href="../css/footer.css">
+<?php
+require_once 'global.php'; ?>
+<link rel="stylesheet" href="<?= BASE_URL ?>/css/footer.css">
 <footer class="footer">
     <div class="container">
         <div class="footer-grid">

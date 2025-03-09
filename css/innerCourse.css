@@ -1,14 +1,30 @@
+:root {
+  --primary-color: #238636;
+  --secondary-color: #2ea043;
+  --text-color: #c9d1d9;
+  --bg-dark: #0d1117;
+  --bg-darker: #010409;
+  --bg-light: #161b22;
+  --border-color: #30363d;
+  --link-color: #58a6ff;
+  --header-color: #f0f6fc;
+  --muted-text: #8b949e;
+  --light-gray: #30363d;
+  --white: #f0f6fc;
+}
+
 .course-container {
   margin-top: 4rem;
   font-family: Arial, sans-serif;
   display: flex;
   height: 100vh;
-  background-color: var(--light-gray);
+  background-color: var(--bg-light);
+  color: var(--text-color);
 }
 
 .sidebar {
   width: 250px;
-  background: var(--white);
+  background: var(--bg-dark);
   color: var(--primary-color);
   padding: 20px;
   position: fixed;
@@ -20,6 +36,7 @@
 .sidebar h2 {
   font-size: 1.2rem;
   margin: 0.75rem auto;
+  color: var(--header-color);
 }
 
 .sidebar ul {
@@ -32,13 +49,22 @@
   cursor: pointer;
   border-radius: 10px;
   transition: background-color 0.2s;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.258);
+  box-shadow: 0 0 2px var(--border-color);
   margin-bottom: 0.75rem;
 }
 
 .sidebar ul li a {
   text-decoration: none;
-  color: inherit;
+  color: var(--text-color);
+}
+
+.sidebar ul li:hover {
+  background-color: var(--secondary-color);
+  color: var(--white);
+}
+
+.sidebar ul li a:hover {
+  color: var(--header-color);
 }
 
 .content {
@@ -46,24 +72,16 @@
   margin-left: 270px;
   padding: 20px;
   flex: 1;
+  background: var(--bg-darker);
 }
 
 .module {
-  background: var(--white);
+  background: var(--bg-light);
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 5px;
   box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.sidebar ul li:hover {
-  background-color: var(--secondary-color);
-  color: var(--white);
-  border-radius: 10px;
-}
-
-.sidebar ul li a:hover {
-  color: inherit;
+  color: var(--text-color);
 }
 
 .mobile-button {
@@ -71,14 +89,14 @@
   top: 60px;
   z-index: 11;
   display: none;
-  color: #6d28d9;
+  color: var(--link-color);
   border-bottom-right-radius: 50%;
   border-top-right-radius: 50%;
   border: none;
   height: 3rem;
   width: 3rem;
   cursor: pointer;
-  background-color: var(--light-gray);
+  background-color: var(--bg-light);
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   transition: left 0.2s;
 }
@@ -93,6 +111,7 @@
   width: 60%;
   overflow: hidden;
   aspect-ratio: 16/9;
+  background: var(--bg-dark);
 }
 
 .responsive-iframe {
@@ -127,7 +146,7 @@
     position: absolute;
     font-size: 1.2rem;
     z-index: 111;
-    background: var(--white);
+    background: var(--bg-dark);
   }
 
   .sidebar.s-active {

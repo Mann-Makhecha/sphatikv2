@@ -1,6 +1,6 @@
 <?php
 include './includes/db.php';
-
+include 'includes/header.php';
 // Fetch courses from the database
 $query = "SELECT id, title, description, image, enroll_link FROM courses";
 $result = $conn->query($query);
@@ -13,16 +13,14 @@ $result = $conn->query($query);
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Courses</title>
-        <link rel="stylesheet" href="./css/course_style.css">
+        <link rel="stylesheet" href="<?= BASE_URL ?>css/course_style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-        <link rel="stylesheet" href="./css/home_style.css">
     </head>
 
     <body>
-        <?php include 'includes/header.php'; ?>
 
         <section class="courses-page">
-            <div class="container">
+            <div class="course-container">
                 <h1>Available Courses</h1>
                 <div class="courses-grid">
                     <?php while ($row = $result->fetch_assoc()): ?>

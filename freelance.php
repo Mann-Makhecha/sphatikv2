@@ -13,14 +13,14 @@ $result = $conn->query($query);
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Freelancers</title>
-        <link rel="stylesheet" href="<?= BASE_URL ?>/css/freelance.css">
+        <link rel="stylesheet" href="<?= BASE_URL ?>css/freelance.css">
         <link rel="stylesheet" href="./css/home_style.css">
     </head>
 
     <body>
 
         <section class="freelancers-page">
-            <div class="container">
+            <div class="freelance-container">
                 <h1>Top Freelancers</h1>
                 <div class="freelancers-grid">
                     <?php while ($row = $result->fetch_assoc()): ?>
