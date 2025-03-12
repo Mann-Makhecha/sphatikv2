@@ -1,25 +1,11 @@
 .compProH2 {
-  color: #6d28d9;
+  color: var(--primary-color);
   font-size: 2rem;
   margin-bottom: 10px;
 }
 
-input[type="text"] {
-  width: 80%;
-  padding: 0.75rem;
-  margin: 12px 0;
-  border-radius: 25px;
-  font-size: 1.2rem;
-  outline: none;
-}
-
-input[type="file"] {
-  padding: 0.75rem;
-  margin: 12px 0;
-  font-size: 1rem;
-  outline: none;
-}
-
+input[type="text"],
+input[type="file"],
 .subit {
   width: 80%;
   padding: 0.75rem;
@@ -30,14 +16,15 @@ input[type="file"] {
 }
 
 input {
-  border: 1px solid #e2e8f0;
-  background: #f3f3f3;
+  border: 1px solid var(--border-color);
+  background: var(--bg-light);
+  color: var(--text-color);
   text-align: left;
 }
 
 input:focus {
-  border-color: #6d28d9;
-  box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.1);
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(35, 134, 54, 0.1);
 }
 
 .file-upload {
@@ -50,23 +37,24 @@ label {
   font-size: 1rem;
   font-weight: bold;
   margin-top: 10px;
+  color: var(--header-color);
 }
 
 .subit {
-  background-color: #6d28d9;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--white);
   border: none;
   cursor: pointer;
   transition: background 0.3s;
 }
 
 .subit:hover {
-  background-color: #5a1fb9;
+  background-color: var(--secondary-color);
 }
 
 @media (max-width: 768px) {
   input,
-  button {
+  .subit {
     width: 90%;
   }
 }

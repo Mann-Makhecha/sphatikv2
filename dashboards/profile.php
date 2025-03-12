@@ -170,7 +170,7 @@ if ($_SESSION['type'] === "member") {
                 <label>College ID Card:</label><br>
                 <input class="file-upload" type="file" name="college_id_card" required><br>
 
-                <label>Employment Letter:</label>
+                <label>Employment Letter:</label><br>
                 <input class="file-upload" type="file" name="employment_letter" required><br>
 
                 <label>Latest Payslip:</label><br>
