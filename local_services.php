@@ -50,7 +50,8 @@ $result = $conn->query($query);
                             <h3><?php echo htmlspecialchars($row['name']); ?></h3>
                             <p><?php echo htmlspecialchars($row['description']); ?></p>
 
-                            <a href="book_service.php?service_id=<?php echo $row['id']; ?>" class="btn">Book Now</a>
+                            <!-- <a href="book_service.php?service_id=<?php echo $row['id']; ?>" class="btn">Book Now</a> -->
+                            <a href="#" onclick="alert('This feature will be available soon')" class="btn">Book Now</a>
                         </div>
                     <?php endwhile; ?>
                 </div>

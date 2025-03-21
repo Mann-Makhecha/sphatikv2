@@ -14,13 +14,13 @@ require_once 'global.php'; ?>
                     <li><a href="about.php">About Us</a></li>
                     <li><a href="courses.php">Courses</a></li>
                     <li><a href="freelance.php">Freelance Services</a></li>
-                    <li><a href="services.php">Local Services</a></li>
+                    <li><a href="local_servies.php">Local Services</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h4>Support</h4>
                 <ul>
-                    <li><a href="contactus.php">Contact Us</a></li>
+                    <li><a href="<?= BASE_URL ?>pages/contact_us.php">Contact Us</a></li>
                     <li><a href="faq.php">FAQ</a></li>
                     <li><a href="privacy.php">Privacy Policy</a></li>
                     <li><a href="terms_of_service.php">Terms of Service</a></li>

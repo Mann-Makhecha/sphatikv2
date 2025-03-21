@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2025 at 02:12 PM
+-- Generation Time: Mar 21, 2025 at 04:01 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `sphatik`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact_messages`
+--
+
+CREATE TABLE `contact_messages` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `contact_messages`
+--
+
+INSERT INTO `contact_messages` (`id`, `name`, `email`, `message`, `created_at`) VALUES
+(1, 'Samkit', 'Samkit@mail.com', 'ok', '2025-03-21 15:00:03');
 
 -- --------------------------------------------------------
 
@@ -41,10 +62,10 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`id`, `title`, `description`, `image`, `created_at`, `enroll_link`) VALUES
-(1, 'Web Development', 'Learn the fundamentals of web development.', 'C:\\xampp\\htdocs\\sphatikv2\\includes\\images\\python.jpg', '2025-02-14 17:29:24', '#'),
-(2, 'Python', 'Pyhtin Course to Levitate your Skills', 'C:\\xampp\\htdocs\\sphatikv2\\includes\\images\\python.jpg', '2025-02-15 03:51:32', '#'),
-(3, 'Python', 'Pyhtin Course to Levitate your Skills', 'C:\\xampp\\htdocs\\sphatikv2\\includes\\images\\python.jpg', '2025-02-15 03:52:37', '#'),
-(4, 'DATA STRUCTURE', '...', 'C:\\xampp\\htdocs\\sphatikv2\\includes\\images\\python.jpg', '2025-02-15 05:42:57', 'https://youtu.be/5_5oE5lgrhw?si=dRLZtMzYMjhfwE2p');
+(1, 'Web Development', 'Learn the fundamentals of web development.', 'http://localhost/sphatikv2/includes/images/web.jpg', '2025-02-14 17:29:24', '#'),
+(2, 'Python', 'Python Course to Levitate your Skills', 'http://localhost/sphatikv2/includes/images/python.jpg', '2025-02-15 03:51:32', '#'),
+(3, 'DBMS', 'MySQL and Oracle  DB course.', 'http://localhost/sphatikv2/includes/images/dbms.jpg', '2025-02-15 03:52:37', '#'),
+(4, 'DATA STRUCTURE', 'A course for levitating your logical knwledge..!', 'http://localhost/sphatikv2/includes/images/ds.jpg', '2025-02-15 05:42:57', 'https://youtu.be/5_5oE5lgrhw?si=dRLZtMzYMjhfwE2p');
 
 -- --------------------------------------------------------
 
@@ -58,18 +79,19 @@ CREATE TABLE `freelancers` (
   `expertise` varchar(255) NOT NULL,
   `profile_image` varchar(255) NOT NULL,
   `contact_link` varchar(255) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `rating` decimal(3,2) NOT NULL DEFAULT 0.00
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `freelancers`
 --
 
-INSERT INTO `freelancers` (`id`, `name`, `expertise`, `profile_image`, `contact_link`, `created_at`) VALUES
-(1, 'Alice Williams', 'UI/UX Designer', 'uploads/alice-williams.jpg', 'contact_freelance.php\r\n', '2025-02-14 17:45:03'),
-(2, 'David Brown', 'Full-Stack Developer', 'uploads/david-brown.jpg', 'https://example.com/david', '2025-02-14 17:45:43'),
-(3, 'mann', 'App Developer', '#', 'mailto:mail@mail.com', '2025-02-15 03:59:54'),
-(4, 'aryan', 'MERN Stack Developer', '#', '#', '2025-02-15 04:00:40');
+INSERT INTO `freelancers` (`id`, `name`, `expertise`, `profile_image`, `contact_link`, `created_at`, `rating`) VALUES
+(1, 'Ashneer Grover', 'UI/UX Designer', 'http://localhost/sphatikv2/includes/images/Ashneer-Grover.webp', 'contact_freelance.php\r\n', '2025-02-14 17:45:03', 1.00),
+(2, 'Hitesh Agrawal', 'Full-Stack Developer', 'http://localhost/sphatikv2/includes/images/RA.avif', 'https://example.com/david', '2025-02-14 17:45:43', 3.00),
+(3, 'Sundar Pichai', 'App Developer', 'http://localhost/sphatikv2/includes/images/SP.webp', 'mailto:mail@mail.com', '2025-02-15 03:59:54', 4.50),
+(4, 'Ramu Jasweerbhai Kaka', 'MERN Stack Developer', 'http://localhost/sphatikv2/includes/images/R.jpg', '#', '2025-02-15 04:00:40', 4.70);
 
 -- --------------------------------------------------------
 
@@ -135,7 +157,7 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`mem_id`, `username`, `email`, `address`, `phone`, `password`, `created_at`, `role`, `status`) VALUES
-(1, 'mann', 'admin@mail.com', 'street1,city1,state1', '9872365287', '$2y$10$BcZ/qFe7l.LtJoob5ulKQOUpKM7AvBcZSVlf7y2rGY1z8N/aXu7uq', '2025-03-03 12:47:29', 'admin', 'verified'),
+(1, 'Mann', 'admin@mail.com', 'street1,city1,state1', '9872365287', '$2y$10$tsYkV.eXfVS89pnQofrh5.RElV0y3LSv1FCT.kS1/yCX8QeY325Ze', '2025-03-03 12:47:29', 'admin', 'verified'),
 (1740753216, 'Samkit', 'samk@gmail.com', 'Khara Kuva No Kha Ho Degham', '9876543210', '$2y$10$n.O8t954e7Ch427lubG8LOYsn3XwJ0u1NnutQnk7I0abea2ICPI7S', '2025-02-28 14:33:37', 'freelancer', 'pending'),
 (1740753966, 'Chirag', 'Chirag@gmail.com', 'Khara Kuva No Kha Ho Degham', '1234567890', '$2y$10$j2rY3sBQR4V925gDAIlyrO4CSwWB4094CNqwmd/.qrpDphiIcsXEq', '2025-02-28 14:46:06', 'instructor', 'pending'),
 (1740821786, 'Samkit-Jain', 'samkitjain2809@gmail.coms', 'Khara Kuva No Kha Ho Degham', '8200700139', '$2y$10$qbO2fIg4SDRxvFWpM6h1qecLTL2Eh1AZEjoeArADumbn93yeW95Zm', '2025-03-01 09:36:26', 'instructor', 'pending');
@@ -210,6 +232,12 @@ INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `created_at`, `
 --
 
 --
+-- Indexes for table `contact_messages`
+--
+ALTER TABLE `contact_messages`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `courses`
 --
 ALTER TABLE `courses`
@@ -266,6 +294,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `contact_messages`
+--
+ALTER TABLE `contact_messages`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `courses`
