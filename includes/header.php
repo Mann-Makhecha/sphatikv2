@@ -9,7 +9,8 @@ if (isset($_COOKIE["id"]) && isset($_COOKIE["type"])) {
 <link rel="stylesheet" href="<?= BASE_URL ?>/css/header.css">
 <header class="header">
     <div class="container">
-        <a href="<?= BASE_URL ?>index.php" class="logo">Sphatik</a> <button class="mobile-menu-btn">
+        <a href="<?= BASE_URL ?>index.php" class="logo">Sphatik</a>
+        <button class="mobile-menu-btn">
             <span></span>
             <span></span>
             <span></span>
