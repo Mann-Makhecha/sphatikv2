@@ -1,6 +1,6 @@
 <?php
 require_once '../includes/db.php';
-require_once '../includes/global.php';
+require_once '../includes/header.php';
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
@@ -36,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <title>Contact Us</title>
         <style>
             form {
+                margin-top: 3rem;
                 background: var(--bg-light);
                 padding: 20px;
                 border-radius: 10px;
@@ -120,3 +121,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </body>
 
 </html>
+<?php
+require_once '../includes/footer.php';
+?>

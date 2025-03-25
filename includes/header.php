@@ -7,6 +7,21 @@ if (isset($_COOKIE["id"]) && isset($_COOKIE["type"])) {
 }
 ?>
 <link rel="stylesheet" href="<?= BASE_URL ?>/css/header.css">
+<link rel="stylesheet" href="<?= BASE_URL ?>/css/loader.css">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+
+<div id="loader">
+    <div class="loader-text">
+        <?php
+        $text = "Sphatik";
+        for($i = 0; $i < strlen($text); $i++) {
+            echo "<span class='letter'>" . $text[$i] . "</span>";
+        }
+        ?>
+    </div>
+</div>
+
 <header class="header">
     <div class="container">
         <a href="<?= BASE_URL ?>index.php" class="logo">Sphatik</a>
@@ -40,4 +55,6 @@ if (isset($_COOKIE["id"]) && isset($_COOKIE["type"])) {
         </nav>
     </div>
 </header>
-<script src="<?= BASE_URL ?>js/home_js.js"></script>
+
+<script src="<?= BASE_URL ?>/js/loader.js"></script>
+<script src="<?= BASE_URL ?>/js/home_js.js"></script>
