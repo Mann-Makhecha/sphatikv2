@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2025 at 04:01 PM
+-- Generation Time: Mar 25, 2025 at 03:25 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -54,18 +54,19 @@ CREATE TABLE `courses` (
   `description` text NOT NULL,
   `image` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `enroll_link` varchar(255) NOT NULL
+  `enroll_link` varchar(255) NOT NULL,
+  `status` enum('active','inactive') NOT NULL DEFAULT 'inactive'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `courses`
 --
 
-INSERT INTO `courses` (`id`, `title`, `description`, `image`, `created_at`, `enroll_link`) VALUES
-(1, 'Web Development', 'Learn the fundamentals of web development.', 'http://localhost/sphatikv2/includes/images/web.jpg', '2025-02-14 17:29:24', '#'),
-(2, 'Python', 'Python Course to Levitate your Skills', 'http://localhost/sphatikv2/includes/images/python.jpg', '2025-02-15 03:51:32', '#'),
-(3, 'DBMS', 'MySQL and Oracle  DB course.', 'http://localhost/sphatikv2/includes/images/dbms.jpg', '2025-02-15 03:52:37', '#'),
-(4, 'DATA STRUCTURE', 'A course for levitating your logical knwledge..!', 'http://localhost/sphatikv2/includes/images/ds.jpg', '2025-02-15 05:42:57', 'https://youtu.be/5_5oE5lgrhw?si=dRLZtMzYMjhfwE2p');
+INSERT INTO `courses` (`id`, `title`, `description`, `image`, `created_at`, `enroll_link`, `status`) VALUES
+(1, 'Web Development', 'Learn the fundamentals of web development.', 'http://localhost/sphatikv2/includes/images/web.jpg', '2025-02-14 17:29:24', '#', 'inactive'),
+(2, 'Python', 'Python Course to Levitate your Skills', 'http://localhost/sphatikv2/includes/images/python.jpg', '2025-02-15 03:51:32', '#', 'inactive'),
+(3, 'DBMS', 'MySQL and Oracle  DB course.', 'http://localhost/sphatikv2/includes/images/dbms.jpg', '2025-02-15 03:52:37', '#', 'inactive'),
+(4, 'DATA STRUCTURE', 'A course for levitating your logical knwledge..!', 'http://localhost/sphatikv2/includes/images/ds.jpg', '2025-02-15 05:42:57', 'https://youtu.be/5_5oE5lgrhw?si=dRLZtMzYMjhfwE2p', 'inactive');
 
 -- --------------------------------------------------------
 
@@ -149,18 +150,19 @@ CREATE TABLE `members` (
   `password` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `role` enum('instructor','local_service_provider','freelancer','user','admin') NOT NULL DEFAULT 'user',
-  `status` enum('verified','pending','rejected','submitted') NOT NULL DEFAULT 'pending'
+  `status` enum('verified','pending','rejected','submitted') NOT NULL DEFAULT 'pending',
+  `activity` enum('active','inactive') NOT NULL DEFAULT 'inactive'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `members`
 --
 
-INSERT INTO `members` (`mem_id`, `username`, `email`, `address`, `phone`, `password`, `created_at`, `role`, `status`) VALUES
-(1, 'Mann', 'admin@mail.com', 'street1,city1,state1', '9872365287', '$2y$10$tsYkV.eXfVS89pnQofrh5.RElV0y3LSv1FCT.kS1/yCX8QeY325Ze', '2025-03-03 12:47:29', 'admin', 'verified'),
-(1740753216, 'Samkit', 'samk@gmail.com', 'Khara Kuva No Kha Ho Degham', '9876543210', '$2y$10$n.O8t954e7Ch427lubG8LOYsn3XwJ0u1NnutQnk7I0abea2ICPI7S', '2025-02-28 14:33:37', 'freelancer', 'pending'),
-(1740753966, 'Chirag', 'Chirag@gmail.com', 'Khara Kuva No Kha Ho Degham', '1234567890', '$2y$10$j2rY3sBQR4V925gDAIlyrO4CSwWB4094CNqwmd/.qrpDphiIcsXEq', '2025-02-28 14:46:06', 'instructor', 'pending'),
-(1740821786, 'Samkit-Jain', 'samkitjain2809@gmail.coms', 'Khara Kuva No Kha Ho Degham', '8200700139', '$2y$10$qbO2fIg4SDRxvFWpM6h1qecLTL2Eh1AZEjoeArADumbn93yeW95Zm', '2025-03-01 09:36:26', 'instructor', 'pending');
+INSERT INTO `members` (`mem_id`, `username`, `email`, `address`, `phone`, `password`, `created_at`, `role`, `status`, `activity`) VALUES
+(1, 'Mann', 'admin@mail.com', 'street1,city1,state1', '9872365287', '$2y$10$tsYkV.eXfVS89pnQofrh5.RElV0y3LSv1FCT.kS1/yCX8QeY325Ze', '2025-03-03 12:47:29', 'admin', 'verified', 'inactive'),
+(1740753216, 'Samkit', 'samk@gmail.com', 'Khara Kuva No Kha Ho Degham', '9876543210', '$2y$10$n.O8t954e7Ch427lubG8LOYsn3XwJ0u1NnutQnk7I0abea2ICPI7S', '2025-02-28 14:33:37', 'freelancer', 'pending', 'inactive'),
+(1740753966, 'Chirag', 'Chirag@gmail.com', 'Khara Kuva No Kha Ho Degham', '1234567890', '$2y$10$j2rY3sBQR4V925gDAIlyrO4CSwWB4094CNqwmd/.qrpDphiIcsXEq', '2025-02-28 14:46:06', 'instructor', 'pending', 'inactive'),
+(1740821786, 'Samkit-Jain', 'samkitjain2809@gmail.coms', 'Khara Kuva No Kha Ho Degham', '8200700139', '$2y$10$qbO2fIg4SDRxvFWpM6h1qecLTL2Eh1AZEjoeArADumbn93yeW95Zm', '2025-03-01 09:36:26', 'instructor', 'pending', 'inactive');
 
 -- --------------------------------------------------------
 
@@ -216,16 +218,28 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `address` varchar(255) NOT NULL,
-  `phone` varchar(10) NOT NULL
+  `phone` varchar(10) NOT NULL,
+  `status` enum('active','inactive') NOT NULL DEFAULT 'inactive'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `created_at`, `address`, `phone`) VALUES
-(1740751687, 'Samkit', 'samk@gmail.com', '$2y$10$eijmjrnng9OPYARYSi7ogu.teluAMjO42oJm5ZM2oSm1U3QeYt/72', '2025-02-28 14:08:07', 'Khara Kuva No Kha Ho Degham', '8200700139'),
-(1740753364, 'Krish', 'krish@mail.com', '$2y$10$hGKkSE7fg/./zKzAZ2KEm.Q/.L58A1eW0bAXUII4pCDiNo1Ain/p2', '2025-02-28 14:36:04', 'Khara Kuva No Kha Ho Degham', '8200700139');
+INSERT INTO `users` (`user_id`, `username`, `email`, `password`, `created_at`, `address`, `phone`, `status`) VALUES
+(1, 'Krish', 'krish@gmail.com', '12345678', '2025-03-25 14:21:04', 'Street 1, City1, Country1', '9876543210', 'inactive'),
+(2, 'Rudra', 'rudra@mail.com', '12345678', '2025-03-25 14:21:04', 'Street 1, City1, Country1', '9876543211', 'inactive'),
+(3, 'Mann', 'mann@mail.com', '12345678', '2025-03-25 14:21:04', 'Street 1, City1, Country1', '9876543212', 'inactive'),
+(4, 'Sujal', 'sujal@mail.com', '12345678', '2025-03-25 14:21:04', 'Street 1, City1, Country1', '9876543213', 'inactive'),
+(5, 'Dhairya', 'dhairya@mail.com', '12345678', '2025-03-25 14:21:04', 'Street 1, City1, Country1', '9876543214', 'inactive'),
+(6, 'Rahul', 'rahul@mail.com', '12345678', '2025-03-25 14:21:04', 'Street 1, City1, Country1', '9876543215', 'inactive'),
+(7, 'Jayesh', 'jayesh@mail.com', '12345678', '2025-03-25 14:21:04', 'Street 1, City1, Country1', '9876543216', 'inactive'),
+(8, 'Parth', 'parth@mail.com', '12345678', '2025-03-25 14:21:04', 'Street 1, City1, Country1', '9876543217', 'inactive'),
+(9, 'Manish', 'manish@mail.com', '12345678', '2025-03-25 14:21:04', 'Street 1, City1, Country1', '9876543218', 'inactive'),
+(10, 'Ashish', 'ashish@mail.com', '12345678', '2025-03-25 14:21:04', 'Street 1, City1, Country1', '9876543219', 'inactive'),
+(11, 'Mukund', 'mukund@mail.com', '12345678', '2025-03-25 14:21:04', 'Street 1, City1, Country1', '9876543220', 'inactive'),
+(1740751687, 'Samkit', 'samk@gmail.com', '$2y$10$eijmjrnng9OPYARYSi7ogu.teluAMjO42oJm5ZM2oSm1U3QeYt/72', '2025-02-28 14:08:07', 'Khara Kuva No Kha Ho Degham', '8200700139', 'active'),
+(1740753364, 'Krish', 'krish@mail.com', '$2y$10$hGKkSE7fg/./zKzAZ2KEm.Q/.L58A1eW0bAXUII4pCDiNo1Ain/p2', '2025-02-28 14:36:04', 'Khara Kuva No Kha Ho Degham', '8200700139', 'active');
 
 --
 -- Indexes for dumped tables

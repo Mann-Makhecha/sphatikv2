@@ -35,7 +35,7 @@ $result = $conn->query($query);
         <title>Local Services</title>
         <link rel="stylesheet" href="<?= BASE_URL ?>css/services.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-        <link rel="stylesheet" href="./css/home_style.css">
+        <link rel="stylesheet" href="./css/index.css">
     </head>
 
     <body>

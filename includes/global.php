@@ -7,11 +7,13 @@ if (isset($_SESSION['type'])) {
 }
 ?>
 
-<link rel="stylesheet" href="<?= BASE_URL ?>/css/home_style.css">
+<link rel="stylesheet" href="<?= BASE_URL ?>/css/index.css">
 <style>
     :root {
-        --primary-color: #238636;
-        --secondary-color: #2ea043;
+        --primary-color: #FF4F00;
+        --secondary-color: #FE5A1D;
+        /* --primary-color: #238636;
+        --secondary-color: #2ea043; */
         --text-color: #c9d1d9;
         --bg-dark: #0d1117;
         --bg-darker: #010409;

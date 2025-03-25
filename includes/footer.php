@@ -1,5 +1,6 @@
 <?php
 require_once 'global.php'; ?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link rel="stylesheet" href="<?= BASE_URL ?>/css/footer.css">
 <footer class="footer">
     <div class="container">
@@ -11,7 +12,7 @@ require_once 'global.php'; ?>
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="about.php">About Us</a></li>
+                    <li><a href="<?= BASE_URL ?>pages/about_us.php">About Us</a></li>
                     <li><a href="courses.php">Courses</a></li>
                     <li><a href="freelance.php">Freelance Services</a></li>
                     <li><a href="local_servies.php">Local Services</a></li>

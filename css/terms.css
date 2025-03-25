@@ -1,0 +1,74 @@
+.terms-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: var(--text-color);
+  margin-top: 3rem;
+}
+
+.terms-header {
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.terms-header h1 {
+  color: var(--header-color);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.terms-header p {
+  color: var(--muted-text);
+}
+
+.terms-section {
+  margin-bottom: 2.5rem;
+}
+
+.terms-section h2 {
+  color: var(--primary-color);
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--primary-color);
+  padding-left: 1rem;
+}
+
+.terms-section h3 {
+  color: var(--header-color);
+  font-size: 1.4rem;
+  margin: 1.5rem 0 1rem 0;
+}
+
+.terms-section p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.terms-section ul {
+  list-style-type: disc;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.terms-section li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.last-updated {
+  color: var(--muted-text);
+  font-style: italic;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+@media (max-width: 768px) {
+  .terms-container {
+    padding: 1rem;
+  }
+
+  .terms-header h1 {
+    font-size: 2rem;
+  }
+}

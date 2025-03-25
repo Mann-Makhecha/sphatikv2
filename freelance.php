@@ -14,7 +14,7 @@ $result = $conn->query($query);
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Freelancers</title>
         <link rel="stylesheet" href="<?= BASE_URL ?>css/freelance.css">
-        <link rel="stylesheet" href="./css/home_style.css">
+        <link rel="stylesheet" href="./css/index.css">
     </head>
 
     <body>
