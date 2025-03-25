@@ -22,9 +22,9 @@ require_once 'global.php'; ?>
                 <h4>Support</h4>
                 <ul>
                     <li><a href="<?= BASE_URL ?>pages/contact_us.php">Contact Us</a></li>
-                    <li><a href="faq.php">FAQ</a></li>
-                    <li><a href="privacy.php">Privacy Policy</a></li>
-                    <li><a href="terms_of_service.php">Terms of Service</a></li>
+                    <li><a href="<?= BASE_URL ?>pages/faq.php">FAQ</a></li>
+                    <li><a href="<?= BASE_URL ?>pages/privacy.php">Privacy Policy</a></li>
+                    <li><a href="<?= BASE_URL ?>pages/terms_of_service.php">Terms of Service</a></li>
                 </ul>
             </div>
             <div class="footer-section">
