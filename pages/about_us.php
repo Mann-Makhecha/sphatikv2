@@ -147,7 +147,7 @@
             </div>
             <div class="team-member">
                 <h3>Shaan Mansuri</h3>
-                <p>Code Optimization</p>
+                <p>Time Pass</p>
             </div>
         </div>
     </section>
