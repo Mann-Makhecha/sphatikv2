@@ -7,8 +7,21 @@
 │ ├── 📜 member_login.php
 │ ├── 📜 member_register.php
 │ ├── 📜 select.php
+│ ├── 📜 logout.php
+│ ├── 📜 update_password.php
+│ ├── 📜 editprofile.php
 │ ├── 📜 user_login.php
-│ └── 📜 user_register.php
+│ └── 📜 register.php
+│
+├── 📂 dashboards
+│ ├── 📜 admin.php
+│ ├── 📜 profile.php
+│
+├── 📂 js
+│ ├── 📜 home_js.js
+│ ├── 📜 loader.js
+│ ├── 📜 profile.js
+│ ├── 📜 script.js
 │
 ├── 📂 css
 │ ├── 📜 about.css
@@ -23,6 +36,10 @@
 │ ├── 📜 local_services.css
 │ ├── 📜 privacy.css
 │ ├── 📜 select_style.css
+│ ├── 📜 update.css
+│ ├── 📜 services.css
+│ ├── 📜 service_book.css
+│ ├── 📜 inner_course.css
 │ └── 📜 terms.css
 │
 ├── 📂 includes
@@ -46,11 +63,12 @@
 │ ├── 📜 contact_us.php
 │ ├── 📜 faq.php
 │ ├── 📜 privacy.php
-│ └── 📜 terms.php
+│ └── 📜 terms_of_service.php
 │
 ├── 📜 README.md
 ├── 📜 STRUCTURE.md
 ├── 📜 courses.php
 ├── 📜 freelance.php
 ├── 📜 local_services.php
+├── 📜 my_course.php
 └── 📜 index.php
